@@ -66,7 +66,6 @@ export default {
     },
     genNumber(digits = 3) {
       const num = Math.floor(Math.random() * (10 ** digits));
-      console.log(num);
       return leftPad(num, digits, 0);
     },
 
