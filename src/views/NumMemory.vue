@@ -7,16 +7,27 @@
         v-model="maxDigits"
         placeholder="Input the max digits"
       />
+      <input
+        class="recite-time-input"
+        type="text"
+        v-model="reciteTime"
+        placeholder="Input the recite time(ms)"
+      />
       <button @click="() => genNumbers(maxDigits)">Generate numbers</button>
     </div>
     <ul class="num-mem-main">
-      <num-memory-row v-for="(number, index) in numbers" :key="index" :num="number" />
+      <num-memory-row
+        v-for="(number, index) in numbers"
+        :key="index"
+        :num="number"
+        :reciteTime="reciteTime"
+      />
     </ul>
   </div>
 </template>
 
 <style lang="scss">
-  .max-digit-input {
+  .max-digit-input, .recite-time-input {
     width: 10rem;
   }
 
@@ -38,6 +49,7 @@ export default {
   data() {
     return {
       maxDigits: '',
+      reciteTime: '',
       numbers: [],
     };
   },
@@ -54,6 +66,7 @@ export default {
     },
     genNumber(digits = 3) {
       const num = Math.floor(Math.random() * (10 ** digits));
+      console.log(num);
       return leftPad(num, digits, 0);
     },
 
