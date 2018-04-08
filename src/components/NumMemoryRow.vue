@@ -34,7 +34,7 @@
 export default {
   name: 'num-memory-row',
   props: {
-    num: Number,
+    num: String,
   },
 };
 </script>

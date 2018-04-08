@@ -26,6 +26,7 @@
 </style>
 
 <script>
+import leftPad from 'left-pad';
 // @ is an alias to /src
 import NumMemoryRow from '@/components/NumMemoryRow.vue';
 
@@ -52,7 +53,8 @@ export default {
       }
     },
     genNumber(digits = 3) {
-      return Math.floor(Math.random() * (10 ** digits));
+      const num = Math.floor(Math.random() * (10 ** digits));
+      return leftPad(num, digits, 0);
     },
 
   },
