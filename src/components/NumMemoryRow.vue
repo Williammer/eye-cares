@@ -1,10 +1,16 @@
 <template>
   <li class="row-container" v-if="answered === true">
     <span class="mem-verified">The number is {{verified === true ? 'correct': 'wrong'}}!</span>
-    <button class="mem-play-btn" v-if="verified === false" @click="startRecite">Restart</button>
+    <button
+      v-if="verified === false"
+      v-focus
+      class="mem-play-btn"
+      @click="startRecite">
+        Restart
+    </button>
   </li>
   <li class="row-container" v-else-if="recited === true">
-    <input class="mem-answer" v-model="answer" />
+    <input v-focus class="mem-answer" v-model="answer" @keyup.enter="startVerify" />
     <button class="mem-answer-btn" @click="startVerify">Submit</button>
   </li>
   <li class="row-container" v-else>
@@ -50,6 +56,13 @@ export default {
     num: String,
     reciteTime: String,
   },
+  directives: {
+    focus: {
+      inserted(el) {
+        el.focus();
+      },
+    },
+  },
   data() {
     return {
       answer: '',
@@ -64,6 +77,7 @@ export default {
       this.answered = true;
       if (this.answer === this.num) {
         this.verified = true;
+        // TODO: emit event for parent
       }
     },
     startRecite() {
