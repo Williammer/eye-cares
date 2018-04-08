@@ -17,10 +17,11 @@
   text-align: center;
   color: #2c3e50;
   display: flex;
+  margin-top: 20px;
 }
 #nav {
-  padding: 2rem 1rem;
-  margin-right: 10rem;
+  padding: 0 20px;
+  margin-right: 50px;
   a {
     display: flex;
     justify-content: flex-start;

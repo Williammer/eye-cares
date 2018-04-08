@@ -1,12 +1,12 @@
 <template>
-  <div class="more">
-    <h1>Future eye trainers will be coming...</h1>
-  </div>
+  <h2 class="more">
+    Future eye trainers will be coming...
+  </h2>
 </template>
 
 <style lang="scss">
   .more {
-    font-size: 1rem;
+    margin: 0;
     color: #777;
   }
 </style>

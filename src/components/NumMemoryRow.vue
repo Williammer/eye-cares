@@ -18,7 +18,7 @@
     }
 
     .mem-number {
-      font-size: 1.6rem;
+      font-size: 20px;
       font-weight: bold;
       padding-left: 20px;
     }
