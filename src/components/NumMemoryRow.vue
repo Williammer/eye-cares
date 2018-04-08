@@ -1,7 +1,15 @@
 <template>
-  <li class="row-container">
+  <li class="row-container" v-if="answered === true">
+    <span class="mem-verified">The number is {{verified === true ? 'correct': 'wrong'}}!</span>
+    <button class="mem-play-btn" v-if="verified === false" @click="startRecite">Restart</button>
+  </li>
+  <li class="row-container" v-else-if="recited === true">
+    <input class="mem-answer" v-model="answer" />
+    <button class="mem-answer-btn" @click="startVerify">Submit</button>
+  </li>
+  <li class="row-container" v-else>
     <span class="mem-number" :class="{reciting}">{{ num }}</span>
-    <button class="mem-play" @click="startRecite">Play</button>
+    <button class="mem-play-btn" @click="startRecite">Play</button>
   </li>
 </template>
 
@@ -44,23 +52,32 @@ export default {
   },
   data() {
     return {
+      answer: '',
+      answered: false,
+      verified: false,
+      recited: false,
       reciting: false,
     };
   },
   methods: {
+    startVerify() {
+      this.answered = true;
+      if (this.answer === this.num) {
+        this.verified = true;
+      }
+    },
     startRecite() {
       this.reciteTimer = setTimeout(() => {
         this.onReciteEnded();
       }, this.reciteTime || 1000);
 
+      this.answered = false;
+      this.verified = false;
+      this.recited = false;
       this.reciting = true;
     },
-
     onReciteEnded() {
-      this.resetRecite();
-    },
-
-    resetRecite() {
+      this.recited = true;
       this.reciting = false;
       clearTimeout(this.reciteTimer);
     },
