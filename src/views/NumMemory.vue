@@ -21,7 +21,6 @@
   }
 
   .num-mem-main {
-    border: 1px solid #ececec;
     padding-left: 0;
   }
 </style>

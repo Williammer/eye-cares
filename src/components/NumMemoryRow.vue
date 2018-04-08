@@ -12,9 +12,10 @@
     justify-content: space-between;
     padding: 6px 12px;
     padding-left: 0;
-    border-bottom: 1px solid #ececec;
+    border: 1px solid #ececec;
+    border-bottom: none;
     &:last-child {
-      border-bottom: none;
+      border-bottom: 1px solid #ececec;
     }
 
     .mem-number {
