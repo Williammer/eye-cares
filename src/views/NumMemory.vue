@@ -3,9 +3,9 @@
     <div class="num-mem-control">
       <input
         class="max-digit-input"
-        type="text"
+        type="number"
         v-model="maxDigits"
-        placeholder="Input the max digits"
+        placeholder="Input max digits (above 3)"
       />
       <input
         class="recite-time-input"
@@ -13,12 +13,12 @@
         v-model="reciteTime"
         placeholder="Input the recite time(ms)"
       />
-      <button @click="() => genNumbers(maxDigits)">Generate numbers</button>
+      <button @click="renderNumMemRows">Generate numbers</button>
     </div>
     <ul class="num-mem-main">
       <num-memory-row
         v-for="(number, index) in numbers"
-        :key="index"
+        :key="index + '-' + number"
         :num="number"
         :reciteTime="reciteTime"
       />
@@ -54,21 +54,23 @@ export default {
     };
   },
   methods: {
-    genNumbers(maxDigits = 3) { // TODO: use more functional style with rxjs
+    renderNumMemRows() {
+      this.genRandomNumbers(this.maxDigits);
+    },
+    genRandomNumbers(maxDigits = 3) { // TODO: use more functional style with rxjs
       this.numbers.length = 0;
 
       let d = 3; // min 3 digits
       while (d <= maxDigits) {
-        this.numbers.push(this.genNumber(d));
-        this.numbers.push(this.genNumber(d));
+        this.numbers.push(this.genRandomNumber(d));
+        this.numbers.push(this.genRandomNumber(d));
         d += 1;
       }
     },
-    genNumber(digits = 3) {
+    genRandomNumber(digits = 3) {
       const num = Math.floor(Math.random() * (10 ** digits));
       return leftPad(num, digits, 0);
     },
-
   },
 };
 </script>
