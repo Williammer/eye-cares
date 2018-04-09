@@ -1,6 +1,8 @@
 <template>
   <li class="row-container" v-if="answered === true">
-    <span class="mem-verified">The number is {{verified === true ? 'correct': 'wrong'}}!</span>
+    <span class="mem-verified">
+      The number is {{verified === true ? 'correct': 'wrong'}}!
+    </span>
     <button
       v-if="verified === false"
       v-focus
@@ -43,8 +45,12 @@
       }
     }
 
-    .mem-play {
+    .mem-play-btn, .mem-answer-btn {
       cursor: pointer;
+    }
+
+    .mem-verified, .mem-answer {
+      margin-left: 20px;
     }
   }
 </style>
@@ -83,7 +89,7 @@ export default {
     startRecite() {
       this.reciteTimer = setTimeout(() => {
         this.onReciteEnded();
-      }, this.reciteTime || 1000);
+      }, this.reciteTime || 500);
 
       this.answered = false;
       this.verified = false;
