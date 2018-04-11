@@ -59,8 +59,11 @@
 export default {
   name: 'num-memory-row',
   props: {
+    idx: Number,
     num: String,
     reciteTime: String,
+    eventHub: Object,
+    notifyNext: Boolean,
   },
   directives: {
     focus: {
@@ -78,18 +81,17 @@ export default {
       reciting: false,
     };
   },
+  mounted() {
+    this.eventHub.$on(`start-${this.idx}`, this.startRecite);
+  },
+  destroyed() {
+    this.eventHub.$off(`start-${this.idx}`);
+  },
   methods: {
-    startVerify() {
-      this.answered = true;
-      if (this.answer === this.num) {
-        this.verified = true;
-        // TODO: emit event for parent
-      }
-    },
     startRecite() {
       this.reciteTimer = setTimeout(() => {
         this.onReciteEnded();
-      }, this.reciteTime || 500);
+      }, this.reciteTime || 400);
 
       this.answered = false;
       this.verified = false;
@@ -100,6 +102,19 @@ export default {
       this.recited = true;
       this.reciting = false;
       clearTimeout(this.reciteTimer);
+    },
+    startVerify() {
+      this.answered = true;
+      if (this.answer !== this.num) {
+        this.answer = '';
+        return;
+      }
+
+      this.answer = '';
+      this.verified = true;
+      if (this.notifyNext) {
+        this.eventHub.$emit(`start-${this.idx + 1}`);
+      }
     },
   },
 };

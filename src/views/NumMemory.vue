@@ -1,5 +1,11 @@
 <template>
   <div class="num-mem-container">
+    <p class="num-mem-intro">
+      Number memory game activates the eye and brain
+      by training to quickly photograph a number sequence in memory.
+      <br/>
+      The starting number length is 3, it will increase on every two numbers.
+    </p>
     <div class="num-mem-control">
       <input
         class="max-digit-input"
@@ -13,33 +19,50 @@
         v-model="reciteTime"
         placeholder="Input the recite time(ms)"
       />
-      <button @click="renderNumMemRows">Generate numbers</button>
+      <button @click="setupNumMemory">Generate numbers</button>
+      <button v-if="numbers.length" @click="memorizeAll">Memorize All</button>
     </div>
     <ul class="num-mem-main">
       <num-memory-row
         v-for="(number, index) in numbers"
         :key="index + '-' + number"
+        :idx="index"
         :num="number"
         :reciteTime="reciteTime"
+        :notifyNext="notifyNext"
+        :eventHub="eventHub"
       />
     </ul>
   </div>
 </template>
 
 <style lang="scss">
-  .max-digit-input, .recite-time-input {
-    width: 10rem;
-  }
+  .num-mem-container {
+    box-shadow: 0px -2px 10px #42b983;
+    padding: 20px 40px 60px;
+    max-width: 1000px;
+    min-width: 500px;
 
-  .num-mem-main {
-    padding-left: 0;
+    .num-mem-intro {
+      text-align: left;
+      font-weight: bold;
+      margin: 0 0 30px;
+    }
+
+    .max-digit-input, .recite-time-input {
+      width: 10rem;
+    }
+
+    .num-mem-main {
+      padding-left: 0;
+    }
   }
 </style>
 
 <script>
+import Vue from 'vue';
 import leftPad from 'left-pad';
-// @ is an alias to /src
-import NumMemoryRow from '@/components/NumMemoryRow.vue';
+import NumMemoryRow from '@/components/NumMemoryRow.vue'; // @ is an alias to /src
 
 export default {
   name: 'num-memory',
@@ -48,26 +71,36 @@ export default {
   },
   data() {
     return {
+      numbers: [],
       maxDigits: '',
       reciteTime: '',
-      numbers: [],
+      notifyNext: false,
+      eventHub: new Vue(),
     };
   },
   methods: {
-    renderNumMemRows() {
-      this.genRandomNumbers(this.maxDigits);
-    },
-    genRandomNumbers(maxDigits = 3) { // TODO: use more functional style with rxjs
+    setupNumMemory() {
       this.numbers.length = 0;
+      this.notifyNext = false;
+      this.numbers = this.generateNumbers(this.maxDigits);
+    },
+    memorizeAll() {
+      this.notifyNext = true;
+      this.eventHub.$emit('start-0');
+    },
+    generateNumbers(maxDigits = 3) { // TODO: use more functional style with rxjs
+      const numbers = [];
 
       let d = 3; // min 3 digits
       while (d <= maxDigits) {
-        this.numbers.push(this.genRandomNumber(d));
-        this.numbers.push(this.genRandomNumber(d));
+        numbers.push(this.generateNumber(d));
+        numbers.push(this.generateNumber(d));
         d += 1;
       }
+
+      return numbers;
     },
-    genRandomNumber(digits = 3) {
+    generateNumber(digits = 3) {
       const num = Math.floor(Math.random() * (10 ** digits));
       return leftPad(num, digits, 0);
     },

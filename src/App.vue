@@ -19,9 +19,10 @@
   display: flex;
   margin-top: 20px;
 }
+
 #nav {
   padding: 0 20px;
-  margin-right: 50px;
+  margin-right: 40px;
   a {
     display: flex;
     justify-content: flex-start;
