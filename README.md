@@ -3,7 +3,7 @@
 ## introduction
 The applications for the curing and training of eyes, aiming to alleviate the typical eye problems like myopia, presbyopia, etc.
 
-**[Eye care games](http://williammer.github.io/works/eye-cares/)**
+**[Eye care games](http://williammer.github.io/eye-cares/)**
 
 
 ## apps
