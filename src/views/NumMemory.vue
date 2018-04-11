@@ -86,7 +86,7 @@ export default {
     },
     memorizeAll() {
       this.notifyNext = true;
-      this.eventHub.$emit('start-0');
+      this.eventHub.$emit('start', 0);
     },
     generateNumbers(maxDigits = 3) { // TODO: use more functional style with rxjs
       const numbers = [];

@@ -82,12 +82,23 @@ export default {
     };
   },
   mounted() {
-    this.eventHub.$on(`start-${this.idx}`, this.startRecite);
+    if (this.eventHub) {
+      this.eventHub.$on('start', this.onStartEvent);
+    }
   },
   destroyed() {
-    this.eventHub.$off(`start-${this.idx}`);
+    if (this.eventHub) {
+      this.eventHub.$off('start', this.onStartEvent);
+    }
   },
   methods: {
+    onStartEvent(index) {
+      if (index !== this.idx) {
+        return;
+      }
+
+      this.startRecite();
+    },
     startRecite() {
       this.reciteTimer = setTimeout(() => {
         this.onReciteEnded();
@@ -112,8 +123,8 @@ export default {
 
       this.answer = '';
       this.verified = true;
-      if (this.notifyNext) {
-        this.eventHub.$emit(`start-${this.idx + 1}`);
+      if (this.notifyNext && this.eventHub) {
+        this.eventHub.$emit('start', this.idx + 1);
       }
     },
   },
