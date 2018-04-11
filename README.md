@@ -10,5 +10,6 @@ The applications for the curing and training of eyes, aiming to alleviate the ty
 1. Number memory
 
 User quickly scan each line of number and fill in the number correctly.
+
 This exercise helps improve eye condition by activating the eye-related brain muscles.
 
