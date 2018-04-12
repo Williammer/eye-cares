@@ -62,9 +62,9 @@ export default {
     idx: Number,
     num: String,
     reciteTime: String,
-    eventHub: Object,
     notifyNext: Boolean,
   },
+  inject: ['eventHub'],
   directives: {
     focus: {
       inserted(el) {

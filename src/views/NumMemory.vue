@@ -30,7 +30,6 @@
         :num="number"
         :reciteTime="reciteTime"
         :notifyNext="notifyNext"
-        :eventHub="eventHub"
       />
     </ul>
   </div>
@@ -68,6 +67,11 @@ export default {
   name: 'num-memory',
   components: {
     NumMemoryRow,
+  },
+  provide() {
+    return {
+      eventHub: this.eventHub,
+    };
   },
   data() {
     return {
