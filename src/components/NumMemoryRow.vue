@@ -102,7 +102,7 @@ export default {
     startRecite() {
       this.reciteTimer = setTimeout(() => {
         this.onReciteEnded();
-      }, this.reciteTime || 400);
+      }, this.reciteTime);
 
       this.answered = false;
       this.verified = false;

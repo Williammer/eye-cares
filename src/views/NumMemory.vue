@@ -7,15 +7,19 @@
       The starting number length is 3, it will increase on every two numbers.
     </p>
     <div class="num-mem-control">
+      <label for="max-digit">Max Digits</label>
       <input
+        name="max-digit"
         class="max-digit-input"
         type="number"
         v-model="maxDigits"
         placeholder="Input max digits (above 3)"
       />
+      <label for="recite-time">Memory time</label>
       <input
+        name="recite-time"
         class="recite-time-input"
-        type="text"
+        type="number"
         v-model="reciteTime"
         placeholder="Input the recite time(ms)"
       />
@@ -76,8 +80,8 @@ export default {
   data() {
     return {
       numbers: [],
-      maxDigits: '',
-      reciteTime: '',
+      maxDigits: '3',
+      reciteTime: '300',
       notifyNext: false,
       eventHub: new Vue(),
     };
@@ -92,7 +96,7 @@ export default {
       this.notifyNext = true;
       this.eventHub.$emit('start', 0);
     },
-    generateNumbers(maxDigits = 3) { // TODO: use more functional style with rxjs
+    generateNumbers(maxDigits) { // TODO: use more functional style with rxjs
       const numbers = [];
 
       let d = 3; // min 3 digits
