@@ -1,6 +1,6 @@
 <template>
   <h2 class="more">
-    Future eye trainers will be coming...
+    Future eye cares will be coming...
   </h2>
 </template>
 
