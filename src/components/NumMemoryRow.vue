@@ -3,45 +3,55 @@
     <span class="mem-verified">
       The number is {{verified === true ? 'correct': 'wrong'}}!
     </span>
-    <button
+    <v-button
+      type="primary"
       v-if="verified === false"
       v-focus
       class="mem-play-btn"
       @click="startRecite">
         Restart
-    </button>
+    </v-button>
   </li>
   <li class="row-container" v-else-if="recited === true">
-    <input v-focus class="mem-answer" v-model="answer" @keyup.enter="startVerify" />
-    <button class="mem-answer-btn" @click="startVerify">Submit</button>
+    <v-input
+      size="large"
+      v-focus
+      class="mem-answer"
+      v-model="answer"
+      placeholder="Input the number"
+      @keyup.enter="startVerify"
+    >
+    </v-input>
+    <v-button type="success" class="mem-answer-btn" @click="startVerify">Submit</v-button>
   </li>
   <li class="row-container" v-else>
     <span class="mem-number" :class="{reciting}">{{ num }}</span>
-    <button class="mem-play-btn" @click="startRecite">Play</button>
+    <v-button
+      v-if="!reciting"
+      type="primary"
+      class="mem-play-btn"
+      @click="startRecite"
+    >
+      Play
+    </v-button>
   </li>
 </template>
 
 <style scoped lang="scss">
   .row-container {
+    width: max-content;
     list-style: none;
     display: flex;
     justify-content: space-between;
     padding: 6px 12px;
-    padding-left: 0;
     border: 1px solid #ececec;
-    border-bottom: none;
-    &:last-child {
-      border-bottom: 1px solid #ececec;
-    }
 
     .mem-number {
       font-size: 20px;
       font-weight: bold;
-      padding-left: 20px;
-      opacity: 0;
-      transition: opacity 0.2s ease-in-out;
+      display: none;
       &.reciting {
-        opacity: 1;
+        display: inline;
       }
     }
 
@@ -49,8 +59,12 @@
       cursor: pointer;
     }
 
+    .mem-answer {
+      width: 180px;
+    }
     .mem-verified, .mem-answer {
-      margin-left: 20px;
+      font-size: 20px;
+      font-weight: bold;
     }
   }
 </style>

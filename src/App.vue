@@ -26,6 +26,7 @@
   a {
     display: flex;
     justify-content: flex-start;
+    font-size: 16px;
     font-weight: bold;
     color: #2c3e50;
     &.router-link-exact-active {

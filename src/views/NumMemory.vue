@@ -7,24 +7,13 @@
       The starting number length is 3, it will increase on every two numbers.
     </p>
     <div class="num-mem-control">
-      <label for="max-digit">Max Digits</label>
-      <input
-        name="max-digit"
-        class="max-digit-input"
-        type="number"
-        v-model="maxDigits"
-        placeholder="Input max digits (above 3)"
-      />
-      <label for="recite-time">Memory time</label>
-      <input
-        name="recite-time"
-        class="recite-time-input"
-        type="number"
-        v-model="reciteTime"
-        placeholder="Input the recite time(ms)"
-      />
-      <button @click="setupNumMemory">Generate numbers</button>
-      <button v-if="numbers.length" @click="memorizeAll">Memorize All</button>
+      <label for="max-digit">Max Digits:</label>
+      <v-input-number size="normal" :min="3" name="max-digit" v-model="maxDigits"></v-input-number>
+      <label for="recite-time">Memory time:</label>
+      <v-input-number size="normal" name="recite-time" v-model="reciteTime"></v-input-number>
+      <br/>
+      <v-button @click="setupNumMemory">Generate numbers</v-button>
+      <v-button type="primary" v-if="numbers.length" @click="memorizeAll">Memorize All</v-button>
     </div>
     <ul class="num-mem-main">
       <num-memory-row
@@ -41,31 +30,49 @@
 
 <style lang="scss">
   .num-mem-container {
-    box-shadow: 0px -2px 10px #42b983;
+    border: 1px solid #d9d9d9;
+    border-radius: 4px;
     padding: 20px 40px 60px;
-    max-width: 1000px;
-    min-width: 500px;
+    max-width: 600px;
+    min-width: 440px;
+    text-align: left;
 
     .num-mem-intro {
       text-align: left;
       font-weight: bold;
-      margin: 0 0 30px;
+      font-size: 16px;
+      margin: 0 0 20px;
     }
 
-    .max-digit-input, .recite-time-input {
-      width: 10rem;
+    .num-mem-control {
+      margin-bottom: 20px;
+
+      label {
+        margin-left: 10px;
+        margin-right: 4px;
+      }
+
+      .ant-btn {
+        margin: 10px 4px;
+      }
     }
 
     .num-mem-main {
-      padding-left: 0;
+      .mem-verified {
+        font-size: 16px;
+      }
     }
   }
 </style>
 
 <script>
 import Vue from 'vue';
-import leftPad from 'left-pad';
 import NumMemoryRow from '@/components/NumMemoryRow.vue'; // @ is an alias to /src
+
+import vueBeauty from 'vue-beauty';
+import 'vue-beauty/package/style/vue-beauty.min.css';
+
+Vue.use(vueBeauty);
 
 export default {
   name: 'num-memory',
@@ -109,8 +116,8 @@ export default {
       return numbers;
     },
     generateNumber(digits = 3) {
-      const num = Math.floor(Math.random() * (10 ** digits));
-      return leftPad(num, digits, 0);
+      const num = Math.floor(Math.random() * (10 ** digits)).toString();
+      return num.padStart(digits, '0');
     },
   },
 };

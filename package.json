@@ -11,9 +11,9 @@
     "e2e:open": "vue-cli-service e2e:open"
   },
   "dependencies": {
-    "left-pad": "^1.2.0",
     "register-service-worker": "^1.0.0",
     "vue": "^2.5.13",
+    "vue-beauty": "^2.0.0-beta.14",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {
