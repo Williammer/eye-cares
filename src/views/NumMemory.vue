@@ -1,16 +1,15 @@
 <template>
   <div class="num-mem-container">
     <p class="num-mem-intro">
-      Number memory game activates the eye and brain
-      by training to quickly photograph a number sequence in memory.
+      Number memory game activates the eye and brain by photograph memorizing a number sequence.
       <br/>
-      The starting number length is 3, it will increase on every two numbers.
+      The minimize digit length is 3, the length increases 1 on every two numbers.
     </p>
     <div class="num-mem-control">
       <label for="max-digit">Max Digits:</label>
-      <v-input-number size="normal" :min="3" name="max-digit" v-model="maxDigits"></v-input-number>
-      <label for="recite-time">Memory time:</label>
-      <v-input-number size="normal" name="recite-time" v-model="reciteTime"></v-input-number>
+      <v-input-number :min="3" name="max-digit" v-model="maxDigits"></v-input-number>
+      <label for="recite-time">Mem time(ms):</label>
+      <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
       <br/>
       <v-button type="danger" @click="setupNumMemory">Generate numbers</v-button>
       <v-button type="primary" v-if="numbers.length" @click="memorizeAll">Memorize All</v-button>
@@ -32,9 +31,9 @@
   .num-mem-container {
     border: 1px solid #d9d9d9;
     border-radius: 4px;
-    padding: 20px 40px 30px;
+    padding: 20px 30px 30px;
     max-width: 600px;
-    min-width: 440px;
+    min-width: 410px;
     text-align: left;
 
     .num-mem-intro {
@@ -48,7 +47,7 @@
       margin-bottom: 10px;
 
       label {
-        margin-left: 10px;
+        margin-left: 8px;
         margin-right: 4px;
       }
 
