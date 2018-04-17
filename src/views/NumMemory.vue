@@ -12,7 +12,7 @@
       <label for="recite-time">Memory time:</label>
       <v-input-number size="normal" name="recite-time" v-model="reciteTime"></v-input-number>
       <br/>
-      <v-button @click="setupNumMemory">Generate numbers</v-button>
+      <v-button type="danger" @click="setupNumMemory">Generate numbers</v-button>
       <v-button type="primary" v-if="numbers.length" @click="memorizeAll">Memorize All</v-button>
     </div>
     <ul class="num-mem-main">
@@ -32,7 +32,7 @@
   .num-mem-container {
     border: 1px solid #d9d9d9;
     border-radius: 4px;
-    padding: 20px 40px 60px;
+    padding: 20px 40px 30px;
     max-width: 600px;
     min-width: 440px;
     text-align: left;
@@ -45,7 +45,7 @@
     }
 
     .num-mem-control {
-      margin-bottom: 20px;
+      margin-bottom: 10px;
 
       label {
         margin-left: 10px;
