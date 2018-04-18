@@ -18,7 +18,7 @@ deploy:
   local-dir: dist
   skip-cleanup: true
   keep-history: true
-  github-token: "205af607223b7f2b88ca47bb7a53a58f520823cf"
+  github-token: 59b49498b13fbca2a9e69ae0d59c194576691c70
   on:
     branches:
       only:
