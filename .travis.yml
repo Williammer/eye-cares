@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - 8.9
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - npm i -g npm@^3.0.0
+install:
+  - npm install
+script:
+  - npm run build
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: ncTxJm6UJxuJWj_eEO6WrA
+  keep-history: true
+  local-dir: dist
+  on:
+    branch: master
