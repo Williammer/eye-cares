@@ -87,7 +87,7 @@ export default {
     return {
       numbers: [],
       maxDigits: '3',
-      reciteTime: '300',
+      reciteTime: 300,
       notifyNext: false,
       eventHub: new Vue(),
     };

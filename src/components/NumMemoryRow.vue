@@ -75,7 +75,7 @@ export default {
   props: {
     idx: Number,
     num: String,
-    reciteTime: String,
+    reciteTime: Number,
     notifyNext: Boolean,
   },
   inject: ['eventHub'],
