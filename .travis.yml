@@ -14,10 +14,12 @@ script:
 - npm run build
 deploy:
   provider: pages
-  skip-cleanup: true
-  github-token:
-    secure: KOqJW7c8qjzuzbYJbU+0EH16e+WVfeHKdCptIcjVRMABMb6rDEGsIt3i+UJoZ44xoVLJBfofw0BgVfsaBhPKdaJLcNPMCKYtmxZNAEk64NEq0gX5XzZ39lVy0adQ1kCNZaYcQCjtMMwvOmWRS8cFXvG6fIwQOmGF2l6avloQAUD95SaHIbNKse9DobGG+W3+9l7YNSE0DpXQR+JQ4U5dnNT44WoYgmYgwkKQERHlYVZJsrwEU3eeTJCNZgECp/kqJwsNcbWy8qKyLDEw1Ephha0q5QQM/7DJsH8OlUVmu85Y06f/9lmuao425EX9fyYEBF1j24rYfo4jErkMJibs3aV4mboJzkonmppckCn+T5SE2nTO0gFpRCnqDRWGQ6LAcOF8sFhccDj/PGzkn+YJQQ0LeHR1lGK5yjie+SLVk5fnjZEuVcqjirC8tp/wLXrYrYgF5+3rZ0+iR/AiIjuzA+Uh63fgwFehqMYIA7b5Ai8sYzfKok9TIAg8quvtcJiBzI638SeyPLAggOpQay58Zdr/IoQevItMyOZk7E0K16SchPP49YOJtAOdIl9h2ENCv2nK6dVoEb60IlImhS4HztJjQyWsxcmmKz/dPAenUy9HvQjxIxY0OMYL9//FLjpwz/qz6Z29FbXUM4pLVUJ9LKEQdtAPvm8eXMlCMc4GE8c=
-  keep-history: true
   local-dir: dist
+  skip-cleanup: true
+  keep-history: true
+  github-token:
+    secure: "KOqJW7c8qjzuzbYJbU+0EH16e+WVfeHKdCptIcjVRMABMb6rDEGsIt3i+UJoZ44xoVLJBfofw0BgVfsaBhPKdaJLcNPMCKYtmxZNAEk64NEq0gX5XzZ39lVy0adQ1kCNZaYcQCjtMMwvOmWRS8cFXvG6fIwQOmGF2l6avloQAUD95SaHIbNKse9DobGG+W3+9l7YNSE0DpXQR+JQ4U5dnNT44WoYgmYgwkKQERHlYVZJsrwEU3eeTJCNZgECp/kqJwsNcbWy8qKyLDEw1Ephha0q5QQM/7DJsH8OlUVmu85Y06f/9lmuao425EX9fyYEBF1j24rYfo4jErkMJibs3aV4mboJzkonmppckCn+T5SE2nTO0gFpRCnqDRWGQ6LAcOF8sFhccDj/PGzkn+YJQQ0LeHR1lGK5yjie+SLVk5fnjZEuVcqjirC8tp/wLXrYrYgF5+3rZ0+iR/AiIjuzA+Uh63fgwFehqMYIA7b5Ai8sYzfKok9TIAg8quvtcJiBzI638SeyPLAggOpQay58Zdr/IoQevItMyOZk7E0K16SchPP49YOJtAOdIl9h2ENCv2nK6dVoEb60IlImhS4HztJjQyWsxcmmKz/dPAenUy9HvQjxIxY0OMYL9//FLjpwz/qz6Z29FbXUM4pLVUJ9LKEQdtAPvm8eXMlCMc4GE8c="
   on:
-    branch: gh-pages
+    branches:
+      only:
+        - master
