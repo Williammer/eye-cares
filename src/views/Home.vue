@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <hello-world msg="Welcome to Eye care trainers!"/>
+    <hello-world msg="Welcome to Eye cares !!"/>
   </div>
 </template>
 
