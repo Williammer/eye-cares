@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.0.1/workbox-sw.js");
 
 importScripts(
-  "./precache-manifest.2a44ff3db78c6bbcce95ca142d4e9ff4.js"
+  "./precache-manifest.908d852a454a507fe831b02c2933caab.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "num-memory"});
