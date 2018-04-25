@@ -9,13 +9,3 @@ install:
 script:
 - npm run lint
 - npm run build
-deploy:
-  provider: pages
-  skip-cleanup: true
-  keep-history: true
-  github-token: 9e948f6e7e33822b52af20440ff10adb2f8b90dd
-  local-dir: dist
-  on:
-    branches:
-      only:
-        - master
