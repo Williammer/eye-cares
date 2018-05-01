@@ -1,8 +1,25 @@
 {
-  "name": "eye-care-trainers",
-  "short_name": "eye-care",
-  "start_url": "/index.html",
+  "name": "Eye Cares",
+  "short_name": "EyeCares",
+  "start_url": "/index.html?launcher=true",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#4DBA87"
+  "background_color": "#333333",
+  "theme_color": "#76abff",
+  "icons": [
+    {
+      "src": "img/icons/launcher-icon-1x.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "img/icons/launcher-icon-2x.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "img/icons/launcher-icon-4x.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ]
 }
