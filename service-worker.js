@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.0.1/workbox-sw.js");
 
 importScripts(
-  "./precache-manifest.908d852a454a507fe831b02c2933caab.js"
+  "./precache-manifest.48e71499f97070b69c52f13482316547.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "num-memory"});
+workbox.core.setCacheNameDetails({prefix: "eye-cares"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
