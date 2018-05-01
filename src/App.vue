@@ -43,7 +43,7 @@
     .logo {
       width: 64px;
       height: 64px;
-      background: url("/img/icons/favicon-64x64.png");
+      background: url("../public/img/icons/favicon-64x64.png");
     }
   }
   footer {
