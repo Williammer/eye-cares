@@ -9,3 +9,13 @@ install:
 script:
 - npm run lint
 - npm run build
+
+# TODO: make deploy work
+deploy:
+  provider: pages
+  skip-cleanup: true
+  keep-history: true
+  github-token: $GITHUB_API_KEY
+  local-dir: dist
+  on:
+    branch: master
