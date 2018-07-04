@@ -3,11 +3,17 @@
     <v-layout>
       <v-sider breakpoint="xs" :collapsed-width="0">
           <div class="logo"></div>
-          <v-menu theme="dark" mode="inline" :data="menuData">
-              <template slot-scope="{data}">
-                <router-link :to="data.path">{{data.name}}</router-link>
-              </template>
-          </v-menu>
+          <div class="menu">
+            <router-link
+              v-for="data in menuData"
+              :key="data.name"
+              :to="data.path"
+              active-class="active"
+              exact
+            >
+              {{data.name}}
+            </router-link>
+          </div>
       </v-sider>
       <v-layout>
         <v-content>
@@ -56,12 +62,17 @@
   .ant-layout {
     flex: inherit;
   }
-  .ant-menu {
+  .menu {
     a {
       font-size: 14px;
+      color: #FFF;
+      display: block;
+      padding: 10px 0;
+      text-decoration: none;
     }
-    .ant-menu-item-selected > a {
+    .active {
       font-weight: bold;
+      background-color: #108ee9;
     }
   }
 }
