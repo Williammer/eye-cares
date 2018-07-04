@@ -1,12 +1,12 @@
 <template>
   <h2 class="more">
-    Future eye cares will be coming...
+    More eye care games are coming soon...
   </h2>
 </template>
 
 <style lang="scss">
   .more {
-    margin: 0;
-    color: #777;
+    margin-top: 20px;
+    color: #555;
   }
 </style>
