@@ -8,11 +8,17 @@
     </p>
     <div class="num-mem-main">
       <div class="num-mem-ctrl-panel">
-        <label for="max-digit">Max Digits:</label>
-        <v-input-number :min="3" name="max-digit" v-model="maxDigits"></v-input-number>
-        <label for="recite-time">Glimpse time(ms):</label>
-        <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
-        <br/>
+        <div class="num-mem-inputs">
+          <label for="min-digit">Number range (Min - Max):</label>
+          <v-input-number class="digits" :min="3" :max="maxDigits" name="min-digit" v-model="minDigits">
+          </v-input-number>
+          <label for="max-digit">- </label>
+          <v-input-number class="digits" :min="3" name="max-digit" v-model="maxDigits">
+          </v-input-number>
+          <br class="input-divider" />
+          <label for="recite-time">Glimpse time(ms):</label>
+          <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
+        </div>
         <v-button type="danger" @click="setupNumMemory">Generate numbers</v-button>
         <v-button type="primary" v-if="numbers.length" @click="memorizeAll">Memorize All</v-button>
       </div>
@@ -59,12 +65,26 @@
       text-align: center;
       .num-mem-ctrl-panel {
         margin-bottom: 30px;
-        label {
-          margin-left: 8px;
-          margin-right: 4px;
-        }
         .ant-btn {
           margin: 10px 4px;
+        }
+        .num-mem-inputs {
+          text-align: left;
+          width: 300px;
+          margin: 0 auto 20px;
+          label {
+            margin-left: 8px;
+            margin-right: 4px;
+          }
+          .input-divider {
+            line-height: 2.4;
+          }
+          .ant-input-number {
+            width: 64px!important;
+            &.digits {
+              width: 48px!important;
+            }
+          }
         }
       }
       .num-mem-playground {
@@ -110,7 +130,8 @@ export default {
   data() {
     return {
       numbers: [],
-      maxDigits: '3',
+      minDigits: '3',
+      maxDigits: '4',
       reciteTime: 300,
       notifyNext: false,
       eventHub: new Vue(),
@@ -126,17 +147,20 @@ export default {
     setupNumMemory() {
       this.numbers.length = 0;
       this.notifyNext = false;
-      this.numbers = this.generateNumbers(this.maxDigits);
+
+      const max = parseInt(this.maxDigits, 10);
+      const min = parseInt(this.minDigits, 10);
+      this.numbers = this.generateNumbers(min, max);
     },
     memorizeAll() {
       this.notifyNext = true;
       this.eventHub.$emit('start', 0);
     },
-    generateNumbers(maxDigits) { // TODO: use more functional style with rxjs
+    generateNumbers(min, max) { // TODO: use more functional style with rxjs
       const numbers = [];
 
-      let d = 3; // min 3 digits
-      while (d <= maxDigits) {
+      let d = min;
+      while (d <= max) {
         numbers.push({ num: this.generateNumber(d), done: false });
         numbers.push({ num: this.generateNumber(d), done: false });
         d += 1;
@@ -144,7 +168,7 @@ export default {
 
       return numbers;
     },
-    generateNumber(digits = 3) {
+    generateNumber(digits) {
       const num = Math.floor(Math.random() * (10 ** digits)).toString();
       return num.padStart(digits, '0');
     },
