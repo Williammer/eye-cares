@@ -34,12 +34,8 @@
 
 <style scoped lang="scss">
   .row-container {
-    width: max-content;
     list-style: none;
-    display: flex;
-    justify-content: space-between;
     padding: 6px 12px;
-
     .mem-number {
       font-size: 20px;
       font-weight: bold;
@@ -48,11 +44,9 @@
         display: inline;
       }
     }
-
     .mem-play-btn, .mem-answer-btn {
       cursor: pointer;
     }
-
     .mem-answer {
       width: 180px;
       line-height: 20px;
@@ -68,7 +62,6 @@
     }
   }
 </style>
-
 <script>
 export default {
   name: 'num-memory-row',

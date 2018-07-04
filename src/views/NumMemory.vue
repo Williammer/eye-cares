@@ -1,77 +1,78 @@
 <template>
   <div class="num-mem-container">
+    <h3 class="num-mem-title">Number Memory Game</h3>
     <p class="num-mem-intro">
       Number memory game activates the eye and brain by photograph memorizing a number sequence.
       <br/>
       The minimize digit length is 3, the length increases 1 on every two numbers.
     </p>
-    <div class="num-mem-control">
-      <label for="max-digit">Max Digits:</label>
-      <v-input-number :min="3" name="max-digit" v-model="maxDigits"></v-input-number>
-      <label for="recite-time">Mem time(ms):</label>
-      <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
-      <br/>
-      <v-button type="danger" @click="setupNumMemory">Generate numbers</v-button>
-      <v-button type="primary" v-if="numbers.length" @click="memorizeAll">Memorize All</v-button>
+    <div class="num-mem-main">
+      <div class="num-mem-ctrl-panel">
+        <label for="max-digit">Max Digits:</label>
+        <v-input-number :min="3" name="max-digit" v-model="maxDigits"></v-input-number>
+        <label for="recite-time">Mem time(ms):</label>
+        <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
+        <br/>
+        <v-button type="danger" @click="setupNumMemory">Generate numbers</v-button>
+        <v-button type="primary" v-if="numbers.length" @click="memorizeAll">Memorize All</v-button>
+      </div>
+      <ul class="num-mem-playground">
+        <num-memory-row
+          v-for="(number, index) in numbers"
+          :key="index + '-' + number"
+          :idx="index"
+          :num="number"
+          :reciteTime="reciteTime"
+          :notifyNext="notifyNext"
+        />
+      </ul>
     </div>
-    <ul class="num-mem-main">
-      <num-memory-row
-        v-for="(number, index) in numbers"
-        :key="index + '-' + number"
-        :idx="index"
-        :num="number"
-        :reciteTime="reciteTime"
-        :notifyNext="notifyNext"
-      />
-    </ul>
   </div>
 </template>
 
 <style lang="scss">
   .num-mem-container {
-    border: 1px solid #d9d9d9;
-    border-radius: 4px;
-    padding: 20px 30px 30px;
+    border-bottom: 1px solid #d9d9d9;
+    padding: 10px 0 30px;
     max-width: 600px;
     min-width: 410px;
     text-align: left;
-
+    .num-mem-title {
+      text-align: center;
+      margin-bottom: 10px;
+    }
     .num-mem-intro {
       text-align: left;
       font-weight: bold;
-      font-size: 16px;
+      font-size: 12px;
       margin: 0 0 20px;
+      padding: 0 20px 20px;
+      border-bottom: 1px solid #CCC;
     }
-
-    .num-mem-control {
-      margin-bottom: 10px;
-
-      label {
-        margin-left: 8px;
-        margin-right: 4px;
-      }
-
-      .ant-btn {
-        margin: 10px 4px;
-      }
-    }
-
     .num-mem-main {
-      .mem-verified {
-        font-size: 16px;
+      margin: 0 10px;
+      text-align: center;
+      .num-mem-ctrl-panel {
+        margin-bottom: 10px;
+        label {
+          margin-left: 8px;
+          margin-right: 4px;
+        }
+        .ant-btn {
+          margin: 10px 4px;
+        }
+      }
+      .num-mem-playground {
+        .mem-verified {
+          font-size: 16px;
+        }
       }
     }
   }
 </style>
-
 <script>
 import Vue from 'vue';
 import NumMemoryRow from '@/components/NumMemoryRow.vue'; // @ is an alias to /src
-
-import vueBeauty from 'vue-beauty';
-import 'vue-beauty/package/style/vue-beauty.min.css';
-
-Vue.use(vueBeauty);
 
 export default {
   name: 'num-memory',
