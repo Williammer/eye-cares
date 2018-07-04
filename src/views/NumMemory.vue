@@ -10,7 +10,7 @@
       <div class="num-mem-ctrl-panel">
         <div class="num-mem-inputs">
           <label for="min-digit">Number range (Min - Max):</label>
-          <v-input-number class="digits" :min="3" :max="maxDigits" name="min-digit" v-model="minDigits">
+          <v-input-number class="digits" :min="3" :max="parseInt(maxDigits, 10)" name="min-digit" v-model="minDigits">
           </v-input-number>
           <label for="max-digit">- </label>
           <v-input-number class="digits" :min="3" name="max-digit" v-model="maxDigits">
