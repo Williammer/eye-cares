@@ -50,10 +50,9 @@
       border-bottom: 1px solid #CCC;
     }
     .num-mem-main {
-      margin: 0 10px;
       text-align: center;
       .num-mem-ctrl-panel {
-        margin-bottom: 10px;
+        margin-bottom: 30px;
         label {
           margin-left: 8px;
           margin-right: 4px;

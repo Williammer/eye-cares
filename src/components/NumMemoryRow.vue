@@ -4,6 +4,9 @@
       The number is {{verified === true ? 'correct': 'wrong'}}!
     </span>
     <v-button
+      ghost
+      type="primary"
+      size="large"
       v-if="verified === false"
       v-focus
       class="mem-play-btn"
@@ -19,15 +22,25 @@
       placeholder="Input the number"
       @keyup.enter="startVerify"
     />
+    <v-button
+      type="success"
+      size="large"
+      @click="startVerify"
+    >
+      OK
+    </v-button>
   </li>
   <li class="row-container" v-else>
-    <span class="mem-number" :class="{reciting}">{{ num }}</span>
+    <span class="mem-number" :class="{reciting}">
+      {{ reciting ? num : `This is a ${num.length} digits number` }}
+    </span>
     <v-button
+      size="large"
       v-if="!reciting"
       class="mem-play-btn"
       @click="startRecite"
     >
-      Play
+      Memorize
     </v-button>
   </li>
 </template>
@@ -37,11 +50,12 @@
     list-style: none;
     padding: 6px 12px;
     .mem-number {
-      font-size: 20px;
-      font-weight: bold;
-      display: none;
+      font-size: 14px;
+      font-weight: normal;
+      margin-right: 10px;
       &.reciting {
-        display: inline;
+        font-size: 20px;
+        font-weight: bold;
       }
     }
     .mem-play-btn, .mem-answer-btn {
@@ -53,6 +67,7 @@
       border: 1px solid #d9d9d9;
       border-radius: 4px;
       padding: 4px 6px;
+      vertical-align: middle;
     }
     .mem-verified {
       margin-right: 10px;
