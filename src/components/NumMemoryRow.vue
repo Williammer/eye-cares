@@ -84,7 +84,6 @@ export default {
     idx: Number,
     num: String,
     reciteTime: Number,
-    notifyNext: Boolean,
   },
   inject: ['eventHub'],
   directives: {
@@ -108,7 +107,7 @@ export default {
       this.eventHub.$on('start', this.onStartEvent);
     }
   },
-  destroyed() {
+  beforeDestroy() {
     if (this.eventHub) {
       this.eventHub.$off('start', this.onStartEvent);
     }
@@ -145,8 +144,8 @@ export default {
 
       this.answer = '';
       this.verified = true;
-      if (this.notifyNext && this.eventHub) {
-        this.eventHub.$emit('start', this.idx + 1);
+      if (this.eventHub) {
+        this.eventHub.$emit('done', this.idx);
       }
     },
   },

@@ -1,6 +1,6 @@
 <template>
   <div class="num-mem-container">
-    <h3 class="num-mem-title">Number Memory Game</h3>
+    <h2 class="num-mem-title">Number Memory Game</h2>
     <p class="num-mem-intro">
       Number memory game activates the eye and brain by photograph memorizing a number sequence.
       <br/>
@@ -10,7 +10,7 @@
       <div class="num-mem-ctrl-panel">
         <label for="max-digit">Max Digits:</label>
         <v-input-number :min="3" name="max-digit" v-model="maxDigits"></v-input-number>
-        <label for="recite-time">Mem time(ms):</label>
+        <label for="recite-time">Glimpse time(ms):</label>
         <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
         <br/>
         <v-button type="danger" @click="setupNumMemory">Generate numbers</v-button>
@@ -18,14 +18,18 @@
       </div>
       <ul class="num-mem-playground">
         <num-memory-row
-          v-for="(number, index) in numbers"
-          :key="index + '-' + number"
+          v-for="({ num }, index) in numbers"
+          :key="index + '-' + num"
           :idx="index"
-          :num="number"
+          :num="num"
           :reciteTime="reciteTime"
-          :notifyNext="notifyNext"
         />
       </ul>
+      <div class="num-mem-win" v-if="allDone">
+        <div class="icon"></div>
+        <span>You win!</span>
+        <p>You can memorize these numbers again, or challenge bigger max digits, shorter glimpse time!</p>
+      </div>
     </div>
   </div>
 </template>
@@ -40,6 +44,7 @@
     .num-mem-title {
       text-align: center;
       margin-bottom: 10px;
+      font-weight: bold;
     }
     .num-mem-intro {
       text-align: left;
@@ -66,6 +71,18 @@
           font-size: 16px;
         }
       }
+      .num-mem-win {
+        margin-top: 30px;
+        .icon {
+          height: 64px;
+          background: url("../../public/img/win.png") center center no-repeat;
+        }
+        span {
+          color: #f04134;
+          font-size: 22px;
+          font-weight: bold;
+        }
+      }
     }
   }
 </style>
@@ -83,6 +100,12 @@ export default {
       eventHub: this.eventHub,
     };
   },
+  mounted() {
+    this.eventHub.$on('done', this.onNumDoneEvent);
+  },
+  beforeDestroy() {
+    this.eventHub.$off('done', this.onNumDoneEvent);
+  },
   data() {
     return {
       numbers: [],
@@ -91,6 +114,12 @@ export default {
       notifyNext: false,
       eventHub: new Vue(),
     };
+  },
+  computed: {
+    allDone() {
+      return this.numbers.length && this.numbers
+        .every(({ done }) => done === true);
+    },
   },
   methods: {
     setupNumMemory() {
@@ -107,8 +136,8 @@ export default {
 
       let d = 3; // min 3 digits
       while (d <= maxDigits) {
-        numbers.push(this.generateNumber(d));
-        numbers.push(this.generateNumber(d));
+        numbers.push({ num: this.generateNumber(d), done: false });
+        numbers.push({ num: this.generateNumber(d), done: false });
         d += 1;
       }
 
@@ -117,6 +146,12 @@ export default {
     generateNumber(digits = 3) {
       const num = Math.floor(Math.random() * (10 ** digits)).toString();
       return num.padStart(digits, '0');
+    },
+    onNumDoneEvent(index) {
+      this.numbers[index].done = true;
+      if (this.notifyNext) {
+        this.eventHub.$emit('start', index + 1);
+      }
     },
   },
 };
