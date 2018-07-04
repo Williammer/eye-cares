@@ -45,6 +45,7 @@
       text-align: center;
       margin-bottom: 10px;
       font-weight: bold;
+      color: #00a854;
     }
     .num-mem-intro {
       text-align: left;
