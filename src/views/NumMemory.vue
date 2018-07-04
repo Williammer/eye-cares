@@ -10,10 +10,10 @@
       <div class="num-mem-ctrl-panel">
         <div class="num-mem-inputs">
           <label for="min-digit">Number range (Min - Max):</label>
-          <v-input-number class="digits" :min="3" :max="parseInt(maxDigits, 10)" name="min-digit" v-model="minDigits">
+          <v-input-number class="digits" :min="3" :max="maxDigits" name="min-digit" v-model="minDigits">
           </v-input-number>
           <label for="max-digit">- </label>
-          <v-input-number class="digits" :min="3" name="max-digit" v-model="maxDigits">
+          <v-input-number class="digits" :min="minDigits" name="max-digit" v-model="maxDigits">
           </v-input-number>
           <br class="input-divider" />
           <label for="recite-time">Glimpse time(ms):</label>
@@ -130,8 +130,8 @@ export default {
   data() {
     return {
       numbers: [],
-      minDigits: '3',
-      maxDigits: '4',
+      minDigits: 3,
+      maxDigits: 4,
       reciteTime: 300,
       notifyNext: false,
       eventHub: new Vue(),
@@ -148,9 +148,7 @@ export default {
       this.numbers.length = 0;
       this.notifyNext = false;
 
-      const max = parseInt(this.maxDigits, 10);
-      const min = parseInt(this.minDigits, 10);
-      this.numbers = this.generateNumbers(min, max);
+      this.numbers = this.generateNumbers(this.minDigits, this.maxDigits);
     },
     memorizeAll() {
       this.notifyNext = true;
