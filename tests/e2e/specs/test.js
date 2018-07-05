@@ -1,8 +1,10 @@
 // https://docs.cypress.io/api/introduction/api.html
 
-describe('My First Test', () => {
-  it('Visits the Kitchen Sink', () => {
+describe('Home - Num Memory Game', () => {
+  it('has basic UI elements', () => {
     cy.visit('/');
-    cy.contains('h1', 'Welcome to Your Vue.js App');
+    cy.contains('h2', 'Number Memory Game');
   });
 });
+
+// TODO: add more...when has more time.

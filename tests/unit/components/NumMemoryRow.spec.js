@@ -3,9 +3,9 @@ import Vue from 'vue';
 import { shallowMount } from '@vue/test-utils';
 import NumMemoryRow from '@/components/NumMemoryRow.vue';
 
+// TODO: add and make these unit tests pass later
 describe('NumMemoryRow.vue', () => {
-  // let wrapper;
-  it.only('should have the expected DOM of initial states', () => {
+  it('should have the expected DOM of initial states', () => {
     const eventHub = new Vue();
     const wrapper = shallowMount(NumMemoryRow);
     wrapper.setProps({
