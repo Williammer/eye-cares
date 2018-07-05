@@ -2,9 +2,12 @@
   <div class="num-mem-container">
     <h2 class="num-mem-title">Number Memory Game</h2>
     <p class="num-mem-intro">
-      Number memory game activates the eye and brain by photograph memorizing a number sequence.
+      Number memory game practice the eyes and brain by memorizing a number in a short period of glimpse time.
+      It is a good exercise for photographic memory, which helps keep the eyes active and vigorous.
       <br/>
-      The minimize digit length is 3, the length increases 1 on every two numbers.
+      The larger the digits and shorter the glimpse time, the more challenging it is.
+      <br/>
+      Have fun practicing the brain and eyes!
     </p>
     <div class="num-mem-main">
       <div class="num-mem-ctrl-panel">
