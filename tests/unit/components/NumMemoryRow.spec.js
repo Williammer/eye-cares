@@ -1,17 +1,18 @@
 import delay from 'timeout-as-promise';
-// import Vue from 'vue';
+import Vue from 'vue';
 import { shallowMount } from '@vue/test-utils';
 import NumMemoryRow from '@/components/NumMemoryRow.vue';
 
 describe('NumMemoryRow.vue', () => {
+  // let wrapper;
   it.only('should have the expected DOM of initial states', () => {
-    // TODO: mock 'eventHub' injection for the wrapper with a more ready test-utils.
-    // const eventHub = new Vue();
+    const eventHub = new Vue();
     const wrapper = shallowMount(NumMemoryRow);
     wrapper.setProps({
-      idx: 'bar',
+      idx: 1,
       num: '0123',
       reciteTime: 300,
+      eventHub,
     });
 
     expect(wrapper.contains('button')).toBe(true);
