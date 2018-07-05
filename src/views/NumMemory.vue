@@ -29,6 +29,7 @@
           :idx="index"
           :num="num"
           :reciteTime="reciteTime"
+          :eventHub="eventHub"
         />
       </ul>
       <div class="num-mem-win" v-if="allDone">
@@ -115,11 +116,6 @@ export default {
   name: 'num-memory',
   components: {
     NumMemoryRow,
-  },
-  provide() {
-    return {
-      eventHub: this.eventHub,
-    };
   },
   mounted() {
     this.eventHub.$on('done', this.onNumDoneEvent);
