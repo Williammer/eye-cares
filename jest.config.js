@@ -15,4 +15,9 @@ module.exports = {
   snapshotSerializers: [
     'jest-serializer-vue',
   ],
+  collectCoverage: false,
+  collectCoverageFrom: [
+    '**/*.{vue}',
+    '!**/node_modules/**',
+  ],
 };
