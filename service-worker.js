@@ -11,10 +11,10 @@
  * See https://goo.gl/2aRDsh
  */
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.0.1/workbox-sw.js");
+importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.3.1/workbox-sw.js");
 
 importScripts(
-  "./precache-manifest.33d5a9233e4cc620c6557b883898e6f4.js"
+  "precache-manifest.e0e84d9feec33faa2b0988f686a5f4fd.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "eye-cares"});
