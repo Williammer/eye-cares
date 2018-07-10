@@ -22,7 +22,7 @@
           <label for="recite-time">Glimpse time(ms):</label>
           <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
         </div>
-        <v-button type="danger" @click="setupNumMemory">Start new game</v-button>
+        <v-button type="error" @click="setupNumMemory">Start new game</v-button>
         <v-button type="primary" v-if="numbers.length" @click="memorizeAll">Memorize one by one</v-button>
       </div>
       <ul class="num-mem-playground">
