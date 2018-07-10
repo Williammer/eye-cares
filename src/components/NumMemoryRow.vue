@@ -19,7 +19,6 @@
       v-focus
       class="mem-answer"
       v-model="answer"
-      placeholder="Input the number"
       @keyup.enter="startVerify"
     />
     <v-button
@@ -51,9 +50,11 @@
     padding: 6px 12px;
     .mem-number {
       font-size: 14px;
+      color: rgba(0,0,0,0.5);
       font-weight: normal;
       margin-right: 10px;
       &.reciting {
+        color: rgba(0,0,0,0.6);
         font-size: 20px;
         font-weight: bold;
       }
@@ -63,17 +64,19 @@
     }
     .mem-answer {
       width: 180px;
-      line-height: 20px;
+      line-height: 1;
       border: 1px solid #d9d9d9;
+      color: rgba(0,0,0,0.65);
       border-radius: 4px;
-      padding: 4px 6px;
-      vertical-align: middle;
+      padding: 4px 8px;
+      margin-right: 2px;
+      vertical-align: top;
     }
     .mem-verified {
       margin-right: 10px;
     }
     .mem-verified, .mem-answer {
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 </style>
