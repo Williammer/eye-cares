@@ -1,7 +1,7 @@
 <template>
   <li class="row-container" v-if="answered === true">
-    <span class="mem-verified">
-      The number is {{verified === true ? 'correct': 'wrong'}}!
+    <span class="mem-verify-result" :class="{verified}" >
+      {{verified === true ? '&#10004; correct': '&#10008; incorrect'}}!
     </span>
     <v-button
       ghost
@@ -72,10 +72,15 @@
       margin-right: 2px;
       vertical-align: top;
     }
-    .mem-verified {
+    .mem-verify-result {
       margin-right: 10px;
+      font-weight: bold;
+      color: #ff5b4f;
+      &.verified {
+        color: #00a854;
+      }
     }
-    .mem-verified, .mem-answer {
+    .mem-verify-result, .mem-answer {
       font-size: 16px;
     }
   }

@@ -15,7 +15,7 @@
             </router-link>
           </div>
       </v-sider>
-      <v-layout>
+      <v-layout class="main">
         <v-content>
           <router-view/>
         </v-content>
@@ -42,12 +42,10 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: #222;
   display: flex;
-  .logo {
-    height: 64px;
-    margin: 0 auto;
-    background: url("../public/img/icons/favicon-64x64.png") center center no-repeat;
+  .ant-layout {
+    flex: inherit;
   }
   .ant-layout-sider-zero-width-trigger {
     top: 0;
@@ -59,8 +57,10 @@
     border-radius: 0;
     font-size: 20px;
   }
-  .ant-layout {
-    flex: inherit;
+  .logo {
+    height: 60px;
+    margin: 0 auto;
+    background: url("../public/img/icons/apple-touch-icon-60x60.png") center center no-repeat;
   }
   .menu {
     a {
@@ -74,6 +74,9 @@
       font-weight: bold;
       background-color: #108ee9;
     }
+  }
+  .main {
+    background: #f4f4f4;
   }
 }
 </style>

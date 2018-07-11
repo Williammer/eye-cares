@@ -22,8 +22,8 @@
           <label for="recite-time">Glimpse time(ms):</label>
           <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
         </div>
-        <v-button type="error" @click="setupNumMemory">Start new game</v-button>
-        <v-button type="primary" v-if="numbers.length" @click="memorizeAll">Memorize one by one</v-button>
+        <v-button class="start-btn" type="error" @click="setupNumMemory">Start new game</v-button>
+        <v-button class="recite-all-btn" type="primary" v-if="numbers.length" @click="memorizeAll">Memorize one by one</v-button>
       </div>
       <ul class="num-mem-playground">
         <num-memory-row
@@ -90,10 +90,15 @@
             }
           }
         }
-      }
-      .num-mem-playground {
-        .mem-verified {
-          font-size: 16px;
+        .start-btn {
+          background-color: #ff5b4f;
+          border-color: #ff5b4f;
+          &:hover {
+            background-color: #ff776d;
+            border-color: #ff776d;
+          }
+        }
+        .recite-all-btn {
         }
       }
       .num-mem-win {

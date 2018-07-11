@@ -7,11 +7,6 @@
   "theme_color": "#76abff",
   "icons": [
     {
-      "src": "img/icons/launcher-icon-1x.png",
-      "type": "image/png",
-      "sizes": "48x48"
-    },
-    {
       "src": "img/icons/launcher-icon-2x.png",
       "type": "image/png",
       "sizes": "96x96"
