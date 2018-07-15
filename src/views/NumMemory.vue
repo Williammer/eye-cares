@@ -78,6 +78,7 @@
       text-align: left;
       font-size: 12px;
       font-weight: bold;
+      font-style: italic;
     }
     .num-mem-main {
       text-align: center;

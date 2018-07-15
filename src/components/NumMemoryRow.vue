@@ -31,7 +31,7 @@
   </li>
   <li class="row-container" v-else>
     <span class="mem-number" :class="{reciting}">
-      {{ reciting ? num : `This is a ${num.length} digits number` }}
+      {{ reciting ? num : `${num.length} digits number` }}
     </span>
     <v-button
       size="large"
@@ -52,10 +52,13 @@
       color: rgba(0,0,0,0.5);
       font-weight: normal;
       margin-right: 10px;
+      font-style: italic;
+      font-size: 12px;
       &.reciting {
         color: rgba(0,0,0,0.6);
         font-size: 20px;
         font-weight: bold;
+        font-style: normal;
       }
     }
     .mem-play-btn, .mem-answer-btn {
