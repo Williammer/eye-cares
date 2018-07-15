@@ -3,11 +3,12 @@
     <span class="num-mem-title">
       Number Memory Game
     </span>
-    <v-tooltip placement="bottomRight">
+    <v-tooltip class="num-mem-tip" placement="bottomRight">
       <v-icon class="more-info-btn" type="info-circle-o"></v-icon>
       <div slot="content">
         <span class="num-mem-intro">
           Number memory game practice the eyes and brain by memorizing a number in a short period of glimpse time.
+          <br/>
           It is a good exercise for photographic memory, which helps keep the eyes active and vigorous.
           <br/>
           <br/>
@@ -75,10 +76,8 @@
     }
     .num-mem-intro {
       text-align: left;
-      font-size: 14px;
+      font-size: 12px;
       font-weight: bold;
-      font-style: italic;
-      line-height: 1.7;
     }
     .num-mem-main {
       text-align: center;
