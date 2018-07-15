@@ -63,7 +63,7 @@
     max-width: 600px;
     min-width: 410px;
     .num-mem-title {
-      font-size: 26px;
+      font-size: 24px;
       text-align: center;
       margin-bottom: 10px;
       font-weight: bold;
@@ -82,7 +82,7 @@
     }
     .num-mem-main {
       text-align: center;
-      margin: 30px 0 50px;
+      margin: 40px 0 50px;
       .num-mem-ctrl-panel {
         margin-bottom: 30px;
         .ant-btn {

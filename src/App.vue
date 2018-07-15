@@ -77,7 +77,8 @@
     }
   }
   .main {
-    background: #f4f4f4;
+    background: #FFF;
+    box-shadow: 0px 0px 4px #CCC;
   }
 }
 </style>
