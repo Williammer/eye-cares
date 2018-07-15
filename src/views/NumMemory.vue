@@ -3,7 +3,7 @@
     <span class="num-mem-title">
       Number Memory Game
     </span>
-    <v-tooltip placement="bottom" init-visible="true">
+    <v-tooltip placement="bottomRight">
       <v-icon class="more-info-btn" type="info-circle-o"></v-icon>
       <div slot="content">
         <span class="num-mem-intro">
