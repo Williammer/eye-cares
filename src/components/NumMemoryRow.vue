@@ -49,7 +49,6 @@
     list-style: none;
     padding: 6px 12px;
     .mem-number {
-      font-size: 14px;
       color: rgba(0,0,0,0.5);
       font-weight: normal;
       margin-right: 10px;

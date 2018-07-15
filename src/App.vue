@@ -19,7 +19,7 @@
         <v-content>
           <router-view/>
         </v-content>
-        <v-footer>
+        <v-footer class="footer">
           <div class="credits">
             Icons made by
             <a href="https://www.flaticon.com/authors/pixel-buddha" title="Pixel Buddha">Pixel Buddha</a>
@@ -39,6 +39,7 @@
 <style lang="scss">
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 14px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -64,7 +65,6 @@
   }
   .menu {
     a {
-      font-size: 14px;
       color: #FFF;
       display: block;
       padding: 10px 0;

@@ -1,18 +1,27 @@
 <template>
   <div class="num-mem-container">
-    <h2 class="num-mem-title">Number Memory Game</h2>
-    <p class="num-mem-intro">
-      Number memory game practice the eyes and brain by memorizing a number in a short period of glimpse time.
-      It is a good exercise for photographic memory, which helps keep the eyes active and vigorous.
-      <br/>
-      The larger the digits and shorter the glimpse time, the more challenging it is.
-      <br/>
-      Have fun practicing the brain and eyes!
-    </p>
+    <span class="num-mem-title">
+      Number Memory Game
+    </span>
+    <v-tooltip placement="bottom" init-visible="true">
+      <v-icon class="more-info-btn" type="info-circle-o"></v-icon>
+      <div slot="content">
+        <span class="num-mem-intro">
+          Number memory game practice the eyes and brain by memorizing a number in a short period of glimpse time.
+          It is a good exercise for photographic memory, which helps keep the eyes active and vigorous.
+          <br/>
+          <br/>
+          The larger the digits and shorter the glimpse time, the more challenging it is.
+          <br/>
+          <br/>
+          Have fun practicing the brain and eyes!
+        </span>
+      </div>
+    </v-tooltip>
     <div class="num-mem-main">
       <div class="num-mem-ctrl-panel">
         <div class="num-mem-inputs">
-          <label for="min-digit">Number range (Min - Max):</label>
+          <label for="min-digit">Digits range (Min - Max):</label>
           <v-input-number class="digits" :min="3" :max="maxDigits" name="min-digit" v-model="minDigits">
           </v-input-number>
           <label for="max-digit">- </label>
@@ -22,8 +31,12 @@
           <label for="recite-time">Glimpse time(ms):</label>
           <v-input-number name="recite-time" v-model="reciteTime"></v-input-number>
         </div>
-        <v-button class="start-btn" type="error" @click="setupNumMemory">Start new game</v-button>
-        <v-button class="recite-all-btn" type="primary" v-if="numbers.length" @click="memorizeAll">Memorize one by one</v-button>
+        <v-button class="start-btn" type="error" size="large" @click="setupNumMemory">
+          Start new game
+        </v-button>
+        <v-button class="recite-all-btn" type="primary" size="large" v-if="numbers.length" @click="memorizeAll">
+          Memorize one by one
+        </v-button>
       </div>
       <ul class="num-mem-playground">
         <num-memory-row
@@ -46,27 +59,30 @@
 
 <style lang="scss">
   .num-mem-container {
-    border-bottom: 1px solid #d9d9d9;
-    padding: 10px 0 30px;
+    margin-top: 10px;
     max-width: 600px;
     min-width: 410px;
-    text-align: left;
     .num-mem-title {
+      font-size: 26px;
       text-align: center;
       margin-bottom: 10px;
       font-weight: bold;
       color: #00a854;
     }
+    .more-info-btn {
+      font-size: 18px;
+      cursor: pointer;
+    }
     .num-mem-intro {
       text-align: left;
+      font-size: 14px;
       font-weight: bold;
-      font-size: 12px;
-      margin: 0 0 20px;
-      padding: 0 20px 20px;
-      border-bottom: 1px solid #CCC;
+      font-style: italic;
+      line-height: 1.7;
     }
     .num-mem-main {
       text-align: center;
+      margin: 30px 0 50px;
       .num-mem-ctrl-panel {
         margin-bottom: 30px;
         .ant-btn {
@@ -74,11 +90,14 @@
         }
         .num-mem-inputs {
           text-align: left;
-          width: 300px;
+          width: 340px;
           margin: 0 auto 20px;
           label {
             margin-left: 8px;
             margin-right: 4px;
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
           }
           .input-divider {
             line-height: 2.4;
@@ -97,8 +116,6 @@
             background-color: #ff776d;
             border-color: #ff776d;
           }
-        }
-        .recite-all-btn {
         }
       }
       .num-mem-win {
