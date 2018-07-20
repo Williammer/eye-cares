@@ -1,10 +1,7 @@
 <template>
   <div class="num-mem-container">
-    <span class="num-mem-title">
-      Number Memory Game
-    </span>
     <v-tooltip class="num-mem-tip" placement="bottomRight">
-      <v-icon class="more-info-btn" type="info-circle-o"></v-icon>
+      <v-icon class="more-info-btn" type="info-circle"></v-icon>
       <div slot="content">
         <span class="num-mem-intro">
           Number memory game practice the eyes and brain by memorizing a number in a short period of glimpse time.
@@ -59,17 +56,15 @@
 </template>
 
 <style lang="scss">
-  .num-mem-container {
-    margin-top: 10px;
-    max-width: 600px;
-    min-width: 410px;
-    .num-mem-title {
-      font-size: 24px;
-      text-align: center;
-      margin-bottom: 10px;
-      font-weight: bold;
-      color: #00a854;
-    }
+.num-mem-container {
+  margin-top: 10px;
+  max-width: 600px;
+  min-width: 410px;
+  .num-mem-tip {
+    position: absolute;
+    top: 8px;
+    right: 10px;
+    color: #FFF;
     .more-info-btn {
       font-size: 18px;
       cursor: pointer;
@@ -80,58 +75,60 @@
       font-weight: bold;
       font-style: italic;
     }
-    .num-mem-main {
-      text-align: center;
-      margin: 40px 0 50px;
-      .num-mem-ctrl-panel {
-        margin-bottom: 30px;
-        .ant-btn {
-          margin: 10px 4px;
+  }
+
+  .num-mem-main {
+    text-align: center;
+    margin: 40px 0 50px;
+    .num-mem-ctrl-panel {
+      margin-bottom: 30px;
+      .ant-btn {
+        margin: 10px 4px;
+      }
+      .num-mem-inputs {
+        text-align: left;
+        width: 340px;
+        margin: 0 auto 20px;
+        label {
+          margin-left: 8px;
+          margin-right: 4px;
+          font-size: 14px;
+          color: #666;
+          font-weight: bold;
         }
-        .num-mem-inputs {
-          text-align: left;
-          width: 340px;
-          margin: 0 auto 20px;
-          label {
-            margin-left: 8px;
-            margin-right: 4px;
-            font-size: 14px;
-            color: #666;
-            font-weight: bold;
-          }
-          .input-divider {
-            line-height: 2.4;
-          }
-          .ant-input-number {
-            width: 64px!important;
-            &.digits {
-              width: 48px!important;
-            }
-          }
+        .input-divider {
+          line-height: 2.4;
         }
-        .start-btn {
-          background-color: #ff5b4f;
-          border-color: #ff5b4f;
-          &:hover {
-            background-color: #ff776d;
-            border-color: #ff776d;
+        .ant-input-number {
+          width: 64px !important;
+          &.digits {
+            width: 48px !important;
           }
         }
       }
-      .num-mem-win {
-        margin-top: 30px;
-        .icon {
-          height: 64px;
-          background: url("../../public/img/win.png") center center no-repeat;
-        }
-        span {
-          color: #f04134;
-          font-size: 22px;
-          font-weight: bold;
+      .start-btn {
+        background-color: #ff5b4f;
+        border-color: #ff5b4f;
+        &:hover {
+          background-color: #ff776d;
+          border-color: #ff776d;
         }
       }
     }
+    .num-mem-win {
+      margin-top: 30px;
+      .icon {
+        height: 64px;
+        background: url("../../public/img/win.png") center center no-repeat;
+      }
+      span {
+        color: #f04134;
+        font-size: 22px;
+        font-weight: bold;
+      }
+    }
   }
+}
 </style>
 <script>
 import Vue from 'vue';
@@ -160,8 +157,9 @@ export default {
   },
   computed: {
     allDone() {
-      return this.numbers.length && this.numbers
-        .every(({ done }) => done === true);
+      return (
+        this.numbers.length && this.numbers.every(({ done }) => done === true)
+      );
     },
   },
   methods: {
@@ -175,7 +173,8 @@ export default {
       this.notifyNext = true;
       this.eventHub.$emit('start', 0);
     },
-    generateNumbers(min, max) { // TODO: use more functional style with rxjs
+    generateNumbers(min, max) {
+      // TODO: use more functional style with rxjs
       const numbers = [];
 
       let d = min;

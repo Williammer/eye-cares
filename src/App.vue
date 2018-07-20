@@ -16,6 +16,7 @@
           </div>
       </v-sider>
       <v-layout class="main">
+        <div class="header">{{this.$route.name}}</div>
         <v-content>
           <router-view/>
         </v-content>
@@ -49,36 +50,55 @@
   .ant-layout {
     flex: inherit;
   }
+  .ant-layout-sider {
+    background: #FFF;
+    box-shadow: 1px 0px 4px #ccc;
+  }
   .ant-layout-sider-zero-width-trigger {
     top: 0;
     right: -32px;
+    z-index: 1;
     width: 32px;
     height: 34px;
     line-height: 34px;
-    background: #444;
+    background: #095a94;
     border-radius: 0;
     font-size: 20px;
+  }
+
+  .header {
+    font-size: 18px;
+    line-height: 32px;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #FFF;
+    background: #095a94;
+    height: 34px;
   }
   .logo {
     height: 60px;
     margin: 0 auto;
-    background: url("../public/img/icons/apple-touch-icon-60x60.png") center center no-repeat;
+    background: url("../public/img/icons/apple-touch-icon-60x60.png") center
+      center no-repeat;
   }
   .menu {
     a {
-      color: #FFF;
       display: block;
+      color: #108ee9;
       padding: 10px 0;
       text-decoration: none;
     }
     .active {
+      color: #FFF;
       font-weight: bold;
       background-color: #108ee9;
     }
   }
   .main {
-    background: #FFF;
-    box-shadow: 0px 0px 4px #CCC;
+    position: relative;
+    background: #fff;
+    box-shadow: 0px 0px 4px #ccc;
   }
 }
 </style>
@@ -86,13 +106,16 @@
 export default {
   data() {
     return {
-      menuData: [{
-        name: 'Number Memory',
-        path: '/',
-      }, {
-        name: 'More',
-        path: '/more',
-      }],
+      menuData: [
+        {
+          name: 'Number Memory',
+          path: '/',
+        },
+        {
+          name: 'More',
+          path: '/more',
+        },
+      ],
     };
   },
 };

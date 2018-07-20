@@ -9,12 +9,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'num-memory',
+      name: 'Number Memory',
       component: NumMemory,
     },
     {
       path: '/more',
-      name: 'more',
+      name: 'More',
       component: More,
     },
   ],
