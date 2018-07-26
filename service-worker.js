@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.3.1/workbox-sw.js");
 
 importScripts(
-  "precache-manifest.ebdd8827fc9f005f3a0f65ec04f9b2c5.js"
+  "precache-manifest.9092882bc355585423d0b1358e3dc39e.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "eye-cares"});
