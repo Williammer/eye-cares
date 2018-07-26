@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <v-layout>
-      <v-sider breakpoint="xs" :collapsed-width="0">
+      <v-sider width="140" breakpoint="xs" :collapsed-width="0">
           <div class="logo"></div>
           <div class="menu">
             <router-link
@@ -47,6 +47,10 @@
   text-align: center;
   color: #222;
   display: flex;
+  a {
+    color: #21947d;
+    font-weight: bold;
+  }
   .ant-layout {
     flex: inherit;
   }
@@ -61,7 +65,7 @@
     width: 32px;
     height: 34px;
     line-height: 34px;
-    background: #095a94;
+    background: #0c434c;
     border-radius: 0;
     font-size: 20px;
   }
@@ -73,7 +77,7 @@
     margin-bottom: 10px;
     font-weight: bold;
     color: #FFF;
-    background: #095a94;
+    background: #0c434c;
     height: 34px;
   }
   .logo {
@@ -85,14 +89,13 @@
   .menu {
     a {
       display: block;
-      color: #108ee9;
+      color: #2fa38c;
       padding: 10px 0;
       text-decoration: none;
     }
     .active {
       color: #FFF;
-      font-weight: bold;
-      background-color: #108ee9;
+      background-color: #2fa38c;
     }
   }
   .main {
