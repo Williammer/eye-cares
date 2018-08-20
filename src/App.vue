@@ -40,8 +40,7 @@
 <style lang="scss">
 #app {
   font-size: 14px;
-  font-family: Elena, ElenaInitial;
-  /* font-family: Avenir, Helvetica, Arial, sans-serif */
+  font-family: "PT sans", Elena, ElenaInitial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -55,7 +54,7 @@
     flex: inherit;
   }
   .ant-layout-sider {
-    background: #FFF;
+    background: #fff;
     box-shadow: 1px 0px 4px #ccc;
   }
   .ant-layout-sider-zero-width-trigger {
@@ -76,7 +75,7 @@
     text-align: center;
     margin-bottom: 10px;
     font-weight: bold;
-    color: #FFF;
+    color: #fff;
     background: #0c434c;
     height: 34px;
   }
@@ -94,7 +93,7 @@
       text-decoration: none;
     }
     .active {
-      color: #FFF;
+      color: #fff;
       background-color: #2fa38c;
     }
   }
