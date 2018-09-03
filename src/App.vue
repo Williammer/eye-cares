@@ -1,3 +1,22 @@
+<script>
+export default {
+  data() {
+    return {
+      menuData: [
+        {
+          name: 'Number Memory',
+          path: '/',
+        },
+        {
+          name: 'More',
+          path: '/more',
+        },
+      ],
+    };
+  },
+};
+</script>
+
 <template>
   <div id="app">
     <v-layout>
@@ -104,21 +123,3 @@
   }
 }
 </style>
-<script>
-export default {
-  data() {
-    return {
-      menuData: [
-        {
-          name: 'Number Memory',
-          path: '/',
-        },
-        {
-          name: 'More',
-          path: '/more',
-        },
-      ],
-    };
-  },
-};
-</script>

@@ -1,3 +1,73 @@
+<script>
+import Vue from 'vue';
+import NumMemoryRow from '@/components/NumMemoryRow.vue'; // @ is an alias to /src
+
+export default {
+  name: 'num-memory',
+  components: {
+    NumMemoryRow,
+  },
+  mounted() {
+    this.eventHub.$on('done', this.onNumDoneEvent);
+  },
+  beforeDestroy() {
+    this.eventHub.$off('done', this.onNumDoneEvent);
+  },
+  data() {
+    return {
+      numbers: [],
+      minDigits: 3,
+      maxDigits: 4,
+      reciteTime: 300,
+      notifyNext: false,
+      eventHub: new Vue(),
+    };
+  },
+  computed: {
+    allDone() {
+      return (
+        this.numbers.length && this.numbers.every(({ done }) => done === true)
+      );
+    },
+  },
+  methods: {
+    setupNumMemory() {
+      this.numbers.length = 0;
+      this.notifyNext = false;
+
+      this.numbers = this.generateNumbers(this.minDigits, this.maxDigits);
+    },
+    memorizeAll() {
+      this.notifyNext = true;
+      this.eventHub.$emit('start', 0);
+    },
+    generateNumbers(min, max) {
+      // TODO: use more functional style with rxjs
+      const numbers = [];
+
+      let d = min;
+      while (d <= max) {
+        numbers.push({ num: this.generateNumber(d), done: false });
+        numbers.push({ num: this.generateNumber(d), done: false });
+        d += 1;
+      }
+
+      return numbers;
+    },
+    generateNumber(digits) {
+      const num = Math.floor(Math.random() * (10 ** digits)).toString();
+      return num.padStart(digits, '0');
+    },
+    onNumDoneEvent(index) {
+      this.numbers[index].done = true;
+      if (this.notifyNext) {
+        this.eventHub.$emit('start', index + 1);
+      }
+    },
+  },
+};
+</script>
+
 <template>
   <div class="num-mem-container">
     <v-tooltip class="num-mem-tip" placement="bottomRight">
@@ -130,72 +200,3 @@
   }
 }
 </style>
-<script>
-import Vue from 'vue';
-import NumMemoryRow from '@/components/NumMemoryRow.vue'; // @ is an alias to /src
-
-export default {
-  name: 'num-memory',
-  components: {
-    NumMemoryRow,
-  },
-  mounted() {
-    this.eventHub.$on('done', this.onNumDoneEvent);
-  },
-  beforeDestroy() {
-    this.eventHub.$off('done', this.onNumDoneEvent);
-  },
-  data() {
-    return {
-      numbers: [],
-      minDigits: 3,
-      maxDigits: 4,
-      reciteTime: 300,
-      notifyNext: false,
-      eventHub: new Vue(),
-    };
-  },
-  computed: {
-    allDone() {
-      return (
-        this.numbers.length && this.numbers.every(({ done }) => done === true)
-      );
-    },
-  },
-  methods: {
-    setupNumMemory() {
-      this.numbers.length = 0;
-      this.notifyNext = false;
-
-      this.numbers = this.generateNumbers(this.minDigits, this.maxDigits);
-    },
-    memorizeAll() {
-      this.notifyNext = true;
-      this.eventHub.$emit('start', 0);
-    },
-    generateNumbers(min, max) {
-      // TODO: use more functional style with rxjs
-      const numbers = [];
-
-      let d = min;
-      while (d <= max) {
-        numbers.push({ num: this.generateNumber(d), done: false });
-        numbers.push({ num: this.generateNumber(d), done: false });
-        d += 1;
-      }
-
-      return numbers;
-    },
-    generateNumber(digits) {
-      const num = Math.floor(Math.random() * (10 ** digits)).toString();
-      return num.padStart(digits, '0');
-    },
-    onNumDoneEvent(index) {
-      this.numbers[index].done = true;
-      if (this.notifyNext) {
-        this.eventHub.$emit('start', index + 1);
-      }
-    },
-  },
-};
-</script>

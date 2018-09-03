@@ -1,3 +1,78 @@
+<script>
+export default {
+  name: 'num-memory-row',
+  props: {
+    idx: Number,
+    num: String,
+    reciteTime: Number,
+    eventHub: Object,
+  },
+  directives: {
+    focus: {
+      inserted(el) {
+        el.focus();
+      },
+    },
+  },
+  data() {
+    return {
+      answer: '',
+      answered: false,
+      verified: false,
+      recited: false,
+      reciting: false,
+    };
+  },
+  mounted() {
+    if (this.eventHub) {
+      this.eventHub.$on('start', this.onStartEvent);
+    }
+  },
+  beforeDestroy() {
+    if (this.eventHub) {
+      this.eventHub.$off('start', this.onStartEvent);
+    }
+  },
+  methods: {
+    onStartEvent(index) {
+      if (index !== this.idx) {
+        return;
+      }
+
+      this.startRecite();
+    },
+    startRecite() {
+      this.reciteTimer = setTimeout(() => {
+        this.onReciteEnded();
+      }, this.reciteTime);
+
+      this.answered = false;
+      this.verified = false;
+      this.recited = false;
+      this.reciting = true;
+    },
+    onReciteEnded() {
+      this.recited = true;
+      this.reciting = false;
+      clearTimeout(this.reciteTimer);
+    },
+    startVerify() {
+      this.answered = true;
+      if (this.answer !== this.num) {
+        this.answer = '';
+        return;
+      }
+
+      this.answer = '';
+      this.verified = true;
+      if (this.eventHub) {
+        this.eventHub.$emit('done', this.idx);
+      }
+    },
+  },
+};
+</script>
+
 <template>
   <li class="row-container" v-if="answered === true">
     <span class="mem-verify-result" :class="{verified}" >
@@ -87,77 +162,3 @@
     }
   }
 </style>
-<script>
-export default {
-  name: 'num-memory-row',
-  props: {
-    idx: Number,
-    num: String,
-    reciteTime: Number,
-    eventHub: Object,
-  },
-  directives: {
-    focus: {
-      inserted(el) {
-        el.focus();
-      },
-    },
-  },
-  data() {
-    return {
-      answer: '',
-      answered: false,
-      verified: false,
-      recited: false,
-      reciting: false,
-    };
-  },
-  mounted() {
-    if (this.eventHub) {
-      this.eventHub.$on('start', this.onStartEvent);
-    }
-  },
-  beforeDestroy() {
-    if (this.eventHub) {
-      this.eventHub.$off('start', this.onStartEvent);
-    }
-  },
-  methods: {
-    onStartEvent(index) {
-      if (index !== this.idx) {
-        return;
-      }
-
-      this.startRecite();
-    },
-    startRecite() {
-      this.reciteTimer = setTimeout(() => {
-        this.onReciteEnded();
-      }, this.reciteTime);
-
-      this.answered = false;
-      this.verified = false;
-      this.recited = false;
-      this.reciting = true;
-    },
-    onReciteEnded() {
-      this.recited = true;
-      this.reciting = false;
-      clearTimeout(this.reciteTimer);
-    },
-    startVerify() {
-      this.answered = true;
-      if (this.answer !== this.num) {
-        this.answer = '';
-        return;
-      }
-
-      this.answer = '';
-      this.verified = true;
-      if (this.eventHub) {
-        this.eventHub.$emit('done', this.idx);
-      }
-    },
-  },
-};
-</script>
