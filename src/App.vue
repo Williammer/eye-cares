@@ -4,7 +4,7 @@ export default {
     return {
       menuData: [
         {
-          name: 'Number Memory',
+          name: 'Number Memory Game',
           path: '/',
         },
         {
@@ -20,7 +20,7 @@ export default {
 <template>
   <div id="app">
     <v-layout>
-      <v-sider width="140" breakpoint="xs" :collapsed-width="0">
+      <v-sider width=180 breakpoint="xs" :collapsed-width=0>
           <div class="logo"></div>
           <div class="menu">
             <router-link
@@ -89,14 +89,14 @@ export default {
   }
 
   .header {
-    font-size: 18px;
-    line-height: 32px;
+    font-size: 20px;
+    line-height: 40px;
     text-align: center;
     margin-bottom: 10px;
     font-weight: bold;
     color: #fff;
     background: #0c434c;
-    height: 34px;
+    height: 40px;
   }
   .logo {
     height: 60px;

@@ -3,7 +3,7 @@ import Vue from 'vue';
 import NumMemoryRow from '@/components/NumMemoryRow.vue'; // @ is an alias to /src
 
 export default {
-  name: 'num-memory',
+  name: 'num-memory-game',
   components: {
     NumMemoryRow,
   },
@@ -132,7 +132,7 @@ export default {
   min-width: 410px;
   .num-mem-tip {
     position: absolute;
-    top: 8px;
+    top: 10px;
     right: 10px;
     color: #FFF;
     .more-info-btn {
