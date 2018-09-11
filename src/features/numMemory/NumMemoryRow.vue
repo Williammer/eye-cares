@@ -1,20 +1,20 @@
 <template>
-  <li class="row-container" v-if="answered === true">
-    <span class="mem-verify-result" :class="{verified}" >
-      {{verified === true ? '&#10004; correct': '&#10008; incorrect'}}!
+  <li class="row-container" v-if="isState('correct', 'incorrect')">
+    <span class="mem-verify-result" :class="{verified: isState('correct')}" >
+      {{isState('correct') ? '&#10004; correct': '&#10008; incorrect'}}!
     </span>
     <v-button
       ghost
       type="primary"
       size="large"
-      v-if="verified === false"
+      v-if="isState('incorrect')"
       v-focus
       class="mem-play-btn"
       @click="startRecite">
         Retry
     </v-button>
   </li>
-  <li class="row-container" v-else-if="recited === true">
+  <li class="row-container" v-else-if="isState('recited')">
     <input
       v-focus
       class="mem-answer"
@@ -30,12 +30,12 @@
     </v-button>
   </li>
   <li class="row-container" v-else>
-    <span class="mem-number" :class="{reciting}">
-      {{ reciting ? num : `${num.length} digits number` }}
+    <span class="mem-number" :class="{reciting: isState('reciting')}">
+      {{ isState('reciting') ? num : `${num.length} digits number` }}
     </span>
     <v-button
       size="large"
-      v-if="!reciting"
+      v-if="!isState('reciting')"
       class="mem-play-btn"
       @click="startRecite"
     >
@@ -45,6 +45,11 @@
 </template>
 
 <script>
+import { Machine } from 'xstate';
+import stateChart from './numMemoryRowStateChart';
+
+const stateM = Machine(stateChart);
+
 export default {
   name: 'num-memory-row',
   props: {
@@ -63,10 +68,7 @@ export default {
   data() {
     return {
       answer: '',
-      answered: false,
-      verified: false,
-      recited: false,
-      reciting: false,
+      state: 'idle',
     };
   },
   mounted() {
@@ -80,37 +82,38 @@ export default {
     }
   },
   methods: {
+    isState(...states) {
+      return states.includes(this.state);
+    },
+    updateState(action) {
+      this.state = stateM.transition(this.state, action).value;
+    },
     onStartEvent(index) {
-      if (index !== this.idx) {
-        return;
-      }
-
+      if (index !== this.idx) return;
       this.startRecite();
     },
     startRecite() {
-      this.reciteTimer = setTimeout(() => {
-        this.onReciteEnded();
-      }, this.reciteTime);
+      this.reciteTimer = setTimeout(
+        this.onReciteEnded.bind(this),
+        this.reciteTime,
+      );
 
-      this.answered = false;
-      this.verified = false;
-      this.recited = false;
-      this.reciting = true;
+      this.updateState('START');
     },
     onReciteEnded() {
-      this.recited = true;
-      this.reciting = false;
+      this.updateState('TIMEOUT');
       clearTimeout(this.reciteTimer);
+      this.reciteTimer = null;
     },
     startVerify() {
-      this.answered = true;
-      if (this.answer !== this.num) {
-        this.answer = '';
+      const { answer } = this;
+      this.answer = '';
+      if (answer !== this.num) {
+        this.updateState('MISSED');
         return;
       }
 
-      this.answer = '';
-      this.verified = true;
+      this.updateState('HIT');
       if (this.eventHub) {
         this.eventHub.$emit('done', this.idx);
       }
