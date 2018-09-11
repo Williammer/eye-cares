@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import More from '@/views/More.vue';
+import More from '@/features/more/More.vue';
 
 describe('More.vue', () => {
   it('should have the expected DOM', () => {

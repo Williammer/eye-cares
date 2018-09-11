@@ -5,9 +5,3 @@ exports[`More.vue should have the expected DOM 1`] = `
   More eye care games are coming soon...
 </h2>
 `;
-
-exports[`More.vue should show the expected text 1`] = `
-<h2 class="more">
-  More eye care games are coming soon...
-</h2>
-`;
