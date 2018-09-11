@@ -120,45 +120,47 @@ export default {
 </template>
 
 <style scoped lang="scss">
-  .row-container {
-    list-style: none;
-    padding: 6px 12px;
-    .mem-number {
-      color: rgba(0,0,0,0.5);
-      font-weight: normal;
-      margin-right: 10px;
-      font-style: italic;
-      font-size: 12px;
-      &.reciting {
-        color: rgba(0,0,0,0.6);
-        font-size: 20px;
-        font-weight: bold;
-        font-style: normal;
-      }
-    }
-    .mem-play-btn, .mem-answer-btn {
-      cursor: pointer;
-    }
-    .mem-answer {
-      width: 180px;
-      line-height: 1;
-      border: 1px solid #d9d9d9;
-      color: rgba(0,0,0,0.65);
-      border-radius: 4px;
-      padding: 4px 8px;
-      margin-right: 2px;
-      vertical-align: top;
-    }
-    .mem-verify-result {
-      margin-right: 10px;
+.row-container {
+  list-style: none;
+  padding: 6px 12px;
+  .mem-number {
+    color: rgba(0, 0, 0, 0.5);
+    font-weight: normal;
+    margin-right: 10px;
+    font-style: italic;
+    font-size: 12px;
+    &.reciting {
+      color: rgba(0, 0, 0, 0.6);
+      font-size: 20px;
       font-weight: bold;
-      color: #ff5b4f;
-      &.verified {
-        color: #00a854;
-      }
-    }
-    .mem-verify-result, .mem-answer {
-      font-size: 16px;
+      font-style: normal;
     }
   }
+  .mem-play-btn,
+  .mem-answer-btn {
+    cursor: pointer;
+  }
+  .mem-answer {
+    width: 180px;
+    line-height: 1;
+    border: 1px solid #d9d9d9;
+    color: rgba(0, 0, 0, 0.65);
+    border-radius: 4px;
+    padding: 4px 8px;
+    margin-right: 2px;
+    vertical-align: top;
+  }
+  .mem-verify-result {
+    margin-right: 10px;
+    font-weight: bold;
+    color: #ff5b4f;
+    &.verified {
+      color: #00a854;
+    }
+  }
+  .mem-verify-result,
+  .mem-answer {
+    font-size: 16px;
+  }
+}
 </style>

@@ -1,6 +1,6 @@
 <script>
 import Vue from 'vue';
-import NumMemoryRow from '@/components/NumMemoryRow.vue'; // @ is an alias to /src
+import NumMemoryRow from './NumMemoryRow.vue'; // @ is an alias to /src
 
 export default {
   name: 'num-memory-game',
@@ -189,7 +189,7 @@ export default {
       margin-top: 30px;
       .icon {
         height: 64px;
-        background: url('../../public/img/win.png') center center no-repeat;
+        background: url('../../../public/img/win.png') center center no-repeat;
       }
       span {
         color: #f04134;

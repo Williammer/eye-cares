@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import NumMemoryGame from './views/NumMemoryGame.vue';
-import More from './views/More.vue';
+import NumMemoryGame from './features/numMemory/NumMemoryGame.vue';
+import More from './features/more/More.vue';
 
 Vue.use(Router);
 
