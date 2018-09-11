@@ -2,14 +2,22 @@
   "root": true,
   "extends": [
     "plugin:vue/essential",
-    "@vue/airbnb"
+    "@vue/airbnb",
+    "plugin:jest/recommended",
+    "plugin:prettier/recommended"
   ],
+  "plugins": ["jest", "prettier"],
   "rules": {
+    "prettier/prettier": 1,
     "max-len": 1,
     "quotes": [1, "single"],
     "no-underscore-dangle": 0,
     "import/prefer-default-export": 0,
-    "no-plusplus": [2, { "allowForLoopAfterthoughts": true }],
-    "consistent-return": [1, { "treatUndefinedAsUnspecified": true }]
+    "no-plusplus": [2, {
+      "allowForLoopAfterthoughts": true
+    }],
+    "consistent-return": [1, {
+      "treatUndefinedAsUnspecified": true
+    }]
   }
 }

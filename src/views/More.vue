@@ -5,8 +5,8 @@
 </template>
 
 <style lang="scss">
-  .more {
-    margin-top: 20px;
-    color: #555;
-  }
+.more {
+  margin-top: 20px;
+  color: #555;
+}
 </style>

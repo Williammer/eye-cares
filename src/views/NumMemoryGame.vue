@@ -55,7 +55,7 @@ export default {
       return numbers;
     },
     generateNumber(digits) {
-      const num = Math.floor(Math.random() * (10 ** digits)).toString();
+      const num = Math.floor(10 ** digits * Math.random()).toString();
       return num.padStart(digits, '0');
     },
     onNumDoneEvent(index) {
@@ -119,7 +119,7 @@ export default {
       <div class="num-mem-win" v-if="allDone">
         <div class="icon"></div>
         <span>You win!</span>
-        <p>You can memorize these numbers again, or challenge bigger max digits, shorter glimpse time!</p>
+        <p class="desc">You can challenge bigger digits, or shorter glimpse time now!</p>
       </div>
     </div>
   </div>
@@ -134,7 +134,7 @@ export default {
     position: absolute;
     top: 10px;
     right: 10px;
-    color: #FFF;
+    color: #fff;
     .more-info-btn {
       font-size: 18px;
       cursor: pointer;
@@ -189,12 +189,18 @@ export default {
       margin-top: 30px;
       .icon {
         height: 64px;
-        background: url("../../public/img/win.png") center center no-repeat;
+        background: url('../../public/img/win.png') center center no-repeat;
       }
       span {
         color: #f04134;
         font-size: 22px;
         font-weight: bold;
+      }
+      .desc {
+        max-width: 400px;
+        font-weight: bold;
+        text-align: left;
+        margin: 0 auto;
       }
     }
   }

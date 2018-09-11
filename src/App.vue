@@ -59,7 +59,7 @@ export default {
 <style lang="scss">
 #app {
   font-size: 14px;
-  font-family: "PT sans", Elena, ElenaInitial;
+  font-family: 'PT sans', Elena, ElenaInitial;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -101,7 +101,7 @@ export default {
   .logo {
     height: 60px;
     margin: 0 auto;
-    background: url("../public/img/icons/apple-touch-icon-60x60.png") center
+    background: url('../public/img/icons/apple-touch-icon-60x60.png') center
       center no-repeat;
   }
   .menu {
