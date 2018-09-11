@@ -85,7 +85,7 @@ export default {
     isState(...states) {
       return states.includes(this.state);
     },
-    updateState(action) {
+    stateTransition(action) {
       this.state = stateM.transition(this.state, action).value;
     },
     onStartEvent(index) {
@@ -98,10 +98,10 @@ export default {
         this.reciteTime,
       );
 
-      this.updateState('START');
+      this.stateTransition('START');
     },
     onReciteEnded() {
-      this.updateState('TIMEOUT');
+      this.stateTransition('TIMEOUT');
       clearTimeout(this.reciteTimer);
       this.reciteTimer = null;
     },
@@ -109,14 +109,12 @@ export default {
       const { answer } = this;
       this.answer = '';
       if (answer !== this.num) {
-        this.updateState('MISSED');
+        this.stateTransition('MISSED');
         return;
       }
 
-      this.updateState('HIT');
-      if (this.eventHub) {
-        this.eventHub.$emit('done', this.idx);
-      }
+      this.stateTransition('HIT');
+      if (this.eventHub) this.eventHub.$emit('done', this.idx);
     },
   },
 };

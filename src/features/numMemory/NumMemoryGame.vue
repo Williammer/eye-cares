@@ -48,7 +48,7 @@
       </ul>
       <div class="num-mem-win" v-if="allDone">
         <div class="icon"></div>
-        <span>You win!</span>
+        <span>You Win!</span>
         <p class="desc">You can challenge bigger digits, or shorter glimpse time now!</p>
       </div>
     </div>
@@ -91,7 +91,6 @@ export default {
     setupNumMemory() {
       this.numbers.length = 0;
       this.notifyNext = false;
-
       this.numbers = this.generateNumbers(this.minDigits, this.maxDigits);
     },
     memorizeAll() {
@@ -99,16 +98,13 @@ export default {
       this.eventHub.$emit('start', 0);
     },
     generateNumbers(min, max) {
-      // TODO: use more functional style with rxjs
       const numbers = [];
-
       let d = min;
       while (d <= max) {
         numbers.push({ num: this.generateNumber(d), done: false });
         numbers.push({ num: this.generateNumber(d), done: false });
         d += 1;
       }
-
       return numbers;
     },
     generateNumber(digits) {
@@ -117,9 +113,7 @@ export default {
     },
     onNumDoneEvent(index) {
       this.numbers[index].done = true;
-      if (this.notifyNext) {
-        this.eventHub.$emit('start', index + 1);
-      }
+      if (this.notifyNext) this.eventHub.$emit('start', index + 1);
     },
   },
 };
