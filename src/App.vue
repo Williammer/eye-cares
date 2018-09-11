@@ -1,22 +1,3 @@
-<script>
-export default {
-  data() {
-    return {
-      menuData: [
-        {
-          name: 'Number Memory Game',
-          path: '/',
-        },
-        {
-          name: 'More',
-          path: '/more',
-        },
-      ],
-    };
-  },
-};
-</script>
-
 <template>
   <div id="app">
     <v-layout>
@@ -55,6 +36,25 @@ export default {
     </v-layout>
   </div>
 </template>
+
+<script>
+export default {
+  data() {
+    return {
+      menuData: [
+        {
+          name: 'Number Memory Game',
+          path: '/',
+        },
+        {
+          name: 'More',
+          path: '/more',
+        },
+      ],
+    };
+  },
+};
+</script>
 
 <style lang="scss">
 #app {

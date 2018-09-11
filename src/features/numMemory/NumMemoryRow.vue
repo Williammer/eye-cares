@@ -1,3 +1,49 @@
+<template>
+  <li class="row-container" v-if="answered === true">
+    <span class="mem-verify-result" :class="{verified}" >
+      {{verified === true ? '&#10004; correct': '&#10008; incorrect'}}!
+    </span>
+    <v-button
+      ghost
+      type="primary"
+      size="large"
+      v-if="verified === false"
+      v-focus
+      class="mem-play-btn"
+      @click="startRecite">
+        Retry
+    </v-button>
+  </li>
+  <li class="row-container" v-else-if="recited === true">
+    <input
+      v-focus
+      class="mem-answer"
+      v-model="answer"
+      @keyup.enter="startVerify"
+    />
+    <v-button
+      type="success"
+      size="large"
+      @click="startVerify"
+    >
+      OK
+    </v-button>
+  </li>
+  <li class="row-container" v-else>
+    <span class="mem-number" :class="{reciting}">
+      {{ reciting ? num : `${num.length} digits number` }}
+    </span>
+    <v-button
+      size="large"
+      v-if="!reciting"
+      class="mem-play-btn"
+      @click="startRecite"
+    >
+      Memorize
+    </v-button>
+  </li>
+</template>
+
 <script>
 export default {
   name: 'num-memory-row',
@@ -72,52 +118,6 @@ export default {
   },
 };
 </script>
-
-<template>
-  <li class="row-container" v-if="answered === true">
-    <span class="mem-verify-result" :class="{verified}" >
-      {{verified === true ? '&#10004; correct': '&#10008; incorrect'}}!
-    </span>
-    <v-button
-      ghost
-      type="primary"
-      size="large"
-      v-if="verified === false"
-      v-focus
-      class="mem-play-btn"
-      @click="startRecite">
-        Retry
-    </v-button>
-  </li>
-  <li class="row-container" v-else-if="recited === true">
-    <input
-      v-focus
-      class="mem-answer"
-      v-model="answer"
-      @keyup.enter="startVerify"
-    />
-    <v-button
-      type="success"
-      size="large"
-      @click="startVerify"
-    >
-      OK
-    </v-button>
-  </li>
-  <li class="row-container" v-else>
-    <span class="mem-number" :class="{reciting}">
-      {{ reciting ? num : `${num.length} digits number` }}
-    </span>
-    <v-button
-      size="large"
-      v-if="!reciting"
-      class="mem-play-btn"
-      @click="startRecite"
-    >
-      Memorize
-    </v-button>
-  </li>
-</template>
 
 <style scoped lang="scss">
 .row-container {
