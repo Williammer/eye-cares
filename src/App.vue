@@ -80,14 +80,14 @@ export default {
   }
   .ant-layout-sider-zero-width-trigger {
     top: 0;
-    right: -32px;
+    right: -38px;
     z-index: 1;
-    width: 32px;
-    height: 34px;
-    line-height: 34px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
     background: #0c434c;
     border-radius: 0;
-    font-size: 20px;
+    font-size: 24px;
   }
 
   .header {
