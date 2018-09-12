@@ -1,4 +1,6 @@
 <template>
+  <!-- TODO: encapsulate the vue-beauty components into separate components,
+  which is easy to maintain/migrate -->
   <li class="row-container" v-if="isState('correct', 'incorrect')">
     <span class="mem-verify-result" :class="{verified: isState('correct')}" >
       {{isState('correct') ? '&#10004; correct': '&#10008; incorrect'}}!

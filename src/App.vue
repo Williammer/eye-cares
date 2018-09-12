@@ -1,4 +1,6 @@
 <template>
+  <!-- TODO: encapsulate the vue-beauty components into separate components,
+  which is easy to maintain/migrate -->
   <div id="app">
     <v-layout>
       <v-sider width=180 breakpoint="xs" :collapsed-width=0>

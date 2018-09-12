@@ -1,4 +1,6 @@
 <template>
+  <!-- TODO: encapsulate the vue-beauty components into separate components,
+  which is easy to maintain/migrate -->
   <div class="num-mem-container">
     <v-tooltip class="num-mem-tip" placement="bottomRight">
       <v-icon class="more-info-btn" type="info-circle"></v-icon>
