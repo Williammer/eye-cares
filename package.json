@@ -1,13 +1,15 @@
 {
   "name": "eye-cares",
-  "version": "0.2.0",
+  "version": "0.0.0-development",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
     "test": "vue-cli-service test:unit",
     "e2e": "vue-cli-service test:e2e --mode dev",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "travis-deploy-once": "travis-deploy-once",
+    "semantic-release": "semantic-release"
   },
   "dependencies": {
     "register-service-worker": "^1.5.2",
@@ -34,8 +36,10 @@
     "node-sass": "^4.9.3",
     "prettier": "^1.14.2",
     "sass-loader": "^7.1.0",
+    "semantic-release": "^15.9.15",
     "timeout-as-promise": "^1.0.0",
-    "vue-template-compiler": "^2.5.17"
+    "vue-template-compiler": "^2.5.17",
+    "travis-deploy-once": "^5.0.7"
   },
   "browserslist": [
     "> 1%",
@@ -54,5 +58,9 @@
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Williammer/eye-cares.git"
   }
 }

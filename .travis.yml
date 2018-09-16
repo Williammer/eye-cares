@@ -1,9 +1,15 @@
 language: node_js
 cache:
   directories:
-  - node_modules
+    - ~/.npm
+    - node_modules
+notifications:
+  email: false
 node_js:
-- 8.9
+  - '10'
+  - '9'
+  - '8'
+  - '6'
 install:
 - npm install
 script:
@@ -19,3 +25,9 @@ deploy:
   local-dir: dist
   on:
     branch: master
+
+after_success:
+  - npm run travis-deploy-once "npm run semantic-release"
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/
