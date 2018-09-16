@@ -9,14 +9,12 @@ node_js:
   - '10'
   - '9'
   - '8'
-  - '6'
 install:
 - npm install
 script:
 - npm run lint
 - npm run build
 
-# TODO: make deploy work
 deploy:
   provider: pages
   skip-cleanup: true
