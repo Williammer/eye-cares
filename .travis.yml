@@ -15,16 +15,19 @@ script:
 - npm run build
 
 deploy:
-  provider: pages
-  skip-cleanup: true
-  keep-history: true
-  github-token: $GITHUB_API_KEY
-  local-dir: dist
-  on:
-    branch: master
+  - provider: pages
+    skip-cleanup: true
+    keep-history: true
+    github-token: $GITHUB_API_KEY
+    local-dir: dist
+    on:
+      branch: master
 
-after_deploy:
-  - npm run travis-deploy-once "npm run semantic-release"
+  - provider: script
+    skip_cleanup: true
+    script:
+      - npx travis-deploy-once "npx semantic-release"
+
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
