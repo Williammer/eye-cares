@@ -24,7 +24,7 @@ deploy:
   on:
     branch: master
 
-after_success:
+after_deploy:
   - npm run travis-deploy-once "npm run semantic-release"
 branches:
   except:
