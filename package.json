@@ -1,7 +1,6 @@
 {
   "name": "eye-cares",
   "version": "0.0.0-development",
-  "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --open",
     "build": "vue-cli-service build",
